@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Child Development & Pedagogy — A Teacher's Study Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF9F5;
+    --ink:#20241f;
+    --ink-soft:#4b5148;
+    --line: rgba(31,41,35,0.12);
+    --card:#ffffff;
+    --teal:#0F5B57;
+    --teal-deep:#0a3f3c;
+    --gold:#B7842E;
+    --gold-soft:#f4e8cf;
+    --note-bg:#eef5f2;
+    --warn-bg:#fbf3e4;
+    --radius:10px;
+    --maxw: 780px;
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark){
+      --paper:#15181a;
+      --ink:#eae8e2;
+      --ink-soft:#b7bdb6;
+      --line: rgba(255,255,255,0.14);
+      --card:#1d2224;
+      --teal:#5fb3ab;
+      --teal-deep:#8fd0c8;
+      --gold:#dcb15c;
+      --gold-soft:#2a2417;
+      --note-bg:#182422;
+      --warn-bg:#241f14;
+    }
+  }
+  :root[data-theme="dark"]{
+      --paper:#15181a;
+      --ink:#eae8e2;
+      --ink-soft:#b7bdb6;
+      --line: rgba(255,255,255,0.14);
+      --card:#1d2224;
+      --teal:#5fb3ab;
+      --teal-deep:#8fd0c8;
+      --gold:#dcb15c;
+      --gold-soft:#2a2417;
+      --note-bg:#182422;
+      --warn-bg:#241f14;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3,h4{font-family:'Source Serif 4', Georgia, serif; color:var(--ink); font-weight:700; margin:0 0 .4em;}
+  a{color:var(--teal-deep);}
+
+  /* ---------- Header / Hero ---------- */
+  header.hero{
+    padding: 64px 24px 40px;
+    border-bottom:1px solid var(--line);
+    background: linear-gradient(180deg, var(--gold-soft) 0%, transparent 100%);
+  }
+  .hero-inner{max-width: var(--maxw); margin:0 auto;}
+  .kicker{color:var(--teal); font-weight:600; font-size:.95rem; letter-spacing:.02em; margin-bottom:10px;}
+  header.hero h1{font-size:2.4rem; line-height:1.15; max-width: 14ch;}
+  header.hero p.lede{font-size:1.1rem; color:var(--ink-soft); max-width:60ch; margin-top:14px;}
+  .theme-toggle{
+    position:fixed; top:16px; right:16px; z-index:50;
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    padding:6px 12px; font-size:.85rem; cursor:pointer; color:var(--ink);
+  }
+
+  /* ---------- Layout ---------- */
+  .layout{
+    max-width: 1180px; margin:0 auto; display:grid;
+    grid-template-columns: 250px minmax(0,1fr); gap:40px; padding: 32px 24px 100px;
+    align-items:start;
+  }
+  nav.toc{
+    position:sticky; top:20px; align-self:start;
+    font-size:.92rem; max-height: calc(100vh - 40px); overflow-y:auto;
+    padding-right:8px;
+  }
+  nav.toc h4{font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); margin-bottom:10px; font-family:'Inter';}
+  nav.toc ol{list-style:none; margin:0; padding:0; counter-reset: chap;}
+  nav.toc li{counter-increment: chap; margin-bottom:2px;}
+  nav.toc a{
+    display:block; padding:6px 8px; border-radius:6px; text-decoration:none; color:var(--ink-soft);
+  }
+  nav.toc a::before{content: counter(chap) ". "; color:var(--teal); font-weight:600;}
+  nav.toc a:hover, nav.toc a.active{background:var(--note-bg); color:var(--ink);}
+
+  main{max-width: var(--maxw); min-width:0;}
+
+  section.chapter{margin-bottom: 64px; scroll-margin-top: 20px;}
+  section.chapter > .chap-label{
+    color:var(--teal); font-weight:600; font-size:.85rem; letter-spacing:.04em; margin-bottom:6px;
+  }
+  section.chapter h2{font-size:1.7rem; border-bottom:2px solid var(--gold-soft); padding-bottom:12px; margin-bottom:20px;}
+  section.chapter h3{font-size:1.2rem; margin-top:30px; color:var(--teal-deep);}
+  section.chapter h4{font-size:1.02rem; margin-top:20px;}
+  p{margin: 0 0 14px;}
+  ul, ol{margin:0 0 16px; padding-left:22px;}
+  li{margin-bottom:6px;}
+
+  /* Teacher note callout */
+  .note{
+    background:var(--note-bg); border-left:4px solid var(--teal);
+    padding:14px 16px; border-radius: 6px; margin: 16px 0; font-size:.96rem;
+  }
+  .note .label{font-weight:700; color:var(--teal-deep); display:block; margin-bottom:4px; font-family:'Source Serif 4', serif;}
+
+  .quote-block{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:14px 18px; margin:16px 0; font-size:.95rem; color:var(--ink-soft);
+  }
+  .quote-block b{color:var(--ink);}
+
+  table{width:100%; border-collapse:collapse; margin:18px 0; font-size:.94rem; background:var(--card); border-radius:8px; overflow:hidden; border:1px solid var(--line);}
+  th, td{text-align:left; padding:9px 12px; border-bottom:1px solid var(--line);}
+  th{background:var(--gold-soft); color:var(--ink); font-family:'Source Serif 4'; font-weight:700;}
+  tr:last-child td{border-bottom:none;}
+
+  .grid-2{display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin:16px 0;}
+  @media (max-width: 640px){ .grid-2{grid-template-columns:1fr;} }
+  .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px;}
+  .card h5{margin:0 0 6px; font-family:'Source Serif 4'; font-size:1rem; color:var(--teal-deep);}
+
+  .tag-row{display:flex; flex-wrap:wrap; gap:8px; margin: 10px 0 18px;}
+  .tag{background:var(--gold-soft); color:var(--ink); border-radius:20px; padding:4px 12px; font-size:.82rem;}
+
+  hr.div{border:none; border-top:1px dashed var(--line); margin: 28px 0;}
+
+  .name-pill{font-weight:600; color:var(--teal-deep);}
+
+  footer{max-width:var(--maxw); margin: 0 auto 60px; padding: 0 24px; color:var(--ink-soft); font-size:.85rem; text-align:center;}
+
+  @media (max-width: 900px){
+    .layout{grid-template-columns: 1fr;}
+    nav.toc{position:relative; top:0; max-height:none; border-bottom:1px solid var(--line); padding-bottom:16px; margin-bottom:10px;}
+  }
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">CDP · Child Development and Pedagogy</div>
+    <h1>Understanding the Growing Mind</h1>
+    <p class="lede">A teacher's translation and walkthrough of a classic CDP study guide — individual differences, growth &amp; development, heredity, learning theories, and inclusive education — explained the way I'd explain it to a classroom of trainee teachers, not just listed as facts to memorise.</p>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="toc" id="toc">
+    <h4>Chapters</h4>
+    <ol>
+      <li><a href="#ch1">Individual Differences</a></li>
+      <li><a href="#ch2">Growth &amp; Development</a></li>
+      <li><a href="#ch3">Child Development</a></li>
+      <li><a href="#ch4">Heredity</a></li>
+      <li><a href="#ch5">Heredity vs. Environment</a></li>
+      <li><a href="#ch6">What Is Learning?</a></li>
+      <li><a href="#ch7">Learning Curves &amp; Plateaus</a></li>
+      <li><a href="#ch8">Transfer of Learning</a></li>
+      <li><a href="#ch9">Learning Environment &amp; Styles</a></li>
+      <li><a href="#ch10">Thorndike's Laws of Learning</a></li>
+      <li><a href="#ch11">Theories of Learning</a></li>
+      <li><a href="#ch12">Children with Disabilities</a></li>
+      <li><a href="#ch13">Learning Disabilities</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+  <!-- CHAPTER 1 -->
+  <section class="chapter" id="ch1">
+    <div class="chap-label">Chapter 1</div>
+    <h2>Individual Differences</h2>
+    <p><b>Individual differences</b> are the ways one person consistently differs from another — even siblings, even twins — in physical build, intellect, temperament, culture, and emotion. No two people are ever completely identical.</p>
+
+    <div class="note"><span class="label">Teacher's note</span>
+    Think of your own classroom: thirty children, same age, same lesson, same teacher — yet thirty different reading speeds, thirty different attention spans. That spread <i>is</i> individual differences in action. The entire point of studying this chapter is practical: once you accept that differences are normal, you stop expecting uniform outcomes and start planning for a range of learners.</div>
+
+    <h3>Who studied it, and how the idea evolved</h3>
+    <p><b>Sir Francis Galton</b> pioneered the scientific study of individual differences, publishing <i>Hereditary Genius</i> in 1869. Later, <b>Pearson, Binet, and Terman</b> extended this work, and today individual differences occupy a central place in psychology.</p>
+
+    <h3>Key definitions</h3>
+    <div class="quote-block"><b>Skinner:</b> Individual differences can include any aspect of the whole personality that is measurable.</div>
+    <div class="quote-block"><b>James Drever:</b> The extent to which a person deviates from the average of their group in physical and mental traits is called an individual difference.</div>
+    <div class="quote-block"><b>Tyler:</b> Differences that can be measured in body size and shape, physical function, movement ability, intelligence, achievement, knowledge, interests, attitudes and personality traits have been proven to exist.</div>
+    <div class="quote-block"><b>Bhatia:</b> A difference between people is, at root, a difference in their traits.</div>
+
+    <h3>Types of individual differences</h3>
+    <div class="tag-row">
+      <span class="tag">Physical</span><span class="tag">Mental</span><span class="tag">Personality</span>
+      <span class="tag">Social</span><span class="tag">Moral</span><span class="tag">Cultural</span>
+      <span class="tag">Racial</span><span class="tag">Religious</span>
+    </div>
+
+    <h4>Physical differences</h4>
+    <p>Build, complexion, and gender vary — sub-classified further by age, weight, height/build (child/elderly; heavy/light build; tall/short).</p>
+
+    <h4>Mental differences</h4>
+    <p>People differ in mental traits (interest, memory, creativity) and in intellectual capacity — graded, on the basis of intelligence, from gifted through average to dull.</p>
+
+    <h4>Social differences</h4>
+    <p>Some children are shy and struggle to make friends; others make friends instantly. Some are universally popular; others stay isolated. Jung classified personality on this axis into <b>introvert</b>, <b>extrovert</b>, and <b>ambivert</b> types.</p>
+
+    <h3>Characteristics of individual differences</h3>
+    <ul>
+      <li>Differences of degree/quantity</li>
+      <li>Differences in interaction of traits</li>
+      <li>Growth with environment</li>
+      <li>Universality — everyone shows them</li>
+      <li>Differences in proportion</li>
+      <li>Inter-individual differences</li>
+    </ul>
+    <p>Two main bases of individual differences: <b>heredity</b> and <b>environment</b>.</p>
+
+    <h3>Causes — Thorndike's five causes</h3>
+    <ol>
+      <li>Biological heredity</li>
+      <li>Social heredity</li>
+      <li>Maturity</li>
+      <li>Sex</li>
+      <li>Environment</li>
+      <li>(plus) the complex interaction between heredity and environment</li>
+    </ol>
+    <p>Other recognised causes: nationality &amp; ethnicity, personality, education, economic status, interest, general intelligence, capacity for learning, power of retention, and social abilities/disabilities.</p>
+
+    <h3>Methods of studying and measuring individual differences</h3>
+    <div class="grid-2">
+      <div class="card"><h5>Ways to study it</h5><ul><li>Testing method</li><li>Life-history method</li><li>Interview method</li><li>Questionnaire method</li><li>Records method</li><li>Report method</li><li>Projective method</li></ul></div>
+      <div class="card"><h5>Ways to measure it</h5><ul><li>Case history method</li><li>Cumulative record card</li><li>Observation</li><li>Scales</li><li>Tests — intelligence, interest, personality, aptitude, achievement</li></ul></div>
+    </div>
+
+    <h3>Educational significance</h3>
+    <p><b>Crow &amp; Crow:</b> Because we must teach the individual, not a group of individuals, it becomes the school's duty — within its limits of budget, staff and curriculum — to give every student, however different from others, a fair opportunity to learn.</p>
+    <ul>
+      <li>Helps in classifying/grouping students sensibly (grouping by intelligence, class size limits, teaching methods, curriculum adjustment, homework, vocational guidance, planning lesson activities, physical education, and offering diverse learning experiences)</li>
+      <li>Prevents frustration in both teacher and student</li>
+      <li>Keeps the teacher aware of their own limits</li>
+      <li>Stops the teacher expecting the impossible</li>
+      <li>Directs proper attention to each child</li>
+      <li>Fosters a fair attitude toward slower learners</li>
+    </ul>
+    <div class="note"><span class="label">Teacher's note</span> <b>Ross:</b> "We must divide our learners into groups according to their ability" — this is exactly why differentiated instruction exists: not to label children, but to meet them where they are.</div>
+
+    <h3>Teaching methods built around individual differences</h3>
+    <table>
+      <tr><th>Method</th><th>Founder</th></tr>
+      <tr><td>Basic Education System</td><td>Mahatma Gandhi</td></tr>
+      <tr><td>Dalton Method</td><td>Helen Parkhurst</td></tr>
+      <tr><td>Project Method</td><td>Kilpatrick</td></tr>
+      <tr><td>Kindergarten Method</td><td>Froebel</td></tr>
+      <tr><td>Montessori System</td><td>Maria Montessori</td></tr>
+      <tr><td>Braille System</td><td>Louis Braille</td></tr>
+      <tr><td>Gary System</td><td>William Wirt</td></tr>
+      <tr><td>Heuristic Method</td><td>Armstrong</td></tr>
+    </table>
+    <p><i>Notes:</i> the Montessori system is mainly for pre-primary children aged 3–7 and for children with intellectual delay. The Gary System is also called "Work, Study, Play."</p>
+  </section>
+
+  <!-- CHAPTER 2 -->
+  <section class="chapter" id="ch2">
+    <div class="chap-label">Chapter 2</div>
+    <h2>Growth &amp; Development</h2>
+    <p>Every child's development begins even before birth, from conception in the mother's womb, and continues through infancy, childhood, adolescence, and adulthood.</p>
+
+    <div class="grid-2">
+      <div class="card"><h5>Frank</h5>Growth refers to change occurring at the cellular level — such as increases in height and weight. Development refers to the complete set of changes occurring in the organism.</div>
+      <div class="card"><h5>J.E. Hurlock / Hadfield</h5>Growth is an increase in size; development is a change in both form and size.</div>
+    </div>
+
+    <ul>
+      <li>Growth means quantitative change in length, weight, size, and body parts.</li>
+      <li>Growth from prenatal life through infancy, childhood, adolescence, into adulthood is called growth.</li>
+      <li>A child's growth is mainly related to physical development, and it is a natural process — but a "narrower" term, being only one component of development.</li>
+    </ul>
+    <p>Development refers to the process through which certain fixed kinds of changes occur, from birth to death, in a person's internal and external organs.</p>
+    <ul>
+      <li>Development is a continuous process, and it is both quantitative and qualitative.</li>
+      <li>Development relates to changes tied to maturation that happen over the course of a lifetime.</li>
+      <li>Changes brought about by development are not always outwardly obvious.</li>
+    </ul>
+
+    <h3>Growth vs. Development — the key distinctions</h3>
+    <table>
+      <tr><th>#</th><th>Growth</th><th>Development</th></tr>
+      <tr><td>1</td><td>Cellular multiplication</td><td>Organised increase in the functional capacity of all body organs, as a result of growth</td></tr>
+      <tr><td>2</td><td>A solitary/single-track process</td><td>A multi-dimensional process</td></tr>
+      <tr><td>3</td><td>Physical change only</td><td>Physical, mental, emotional, social, and moral change</td></tr>
+      <tr><td>4</td><td>Quantitative</td><td>Both quantitative and qualitative</td></tr>
+      <tr><td>5</td><td>Occurs over a fixed period</td><td>A lifelong process</td></tr>
+      <tr><td>6</td><td>Concerns biological readiness</td><td>Concerns psycho-biological readiness</td></tr>
+      <tr><td>7</td><td>—</td><td>Contains two opposing qualities: Growth and Entropy (decay). Early in life growth is rapid and decay slow; near the end of life growth slows and decay speeds up</td></tr>
+      <tr><td>8</td><td>Only measured</td><td>Both measured and evaluated</td></tr>
+      <tr><td>9</td><td colspan="2">Both are the joint result of the interaction between heredity and environment</td></tr>
+    </table>
+    <p>Growth is physical; development is psychological.</p>
+
+    <div class="note"><span class="label">Teacher's note</span> This is the single most-tested distinction in this whole topic, so anchor it with one sentence: <i>growth is what a measuring tape shows; development is what a whole assessment shows.</i> A child can stop growing taller at 18 but keeps developing — cognitively, emotionally, socially — well beyond that.</div>
+
+    <h3>Definitions of Growth and Development</h3>
+    <div class="quote-block"><b>Munroe:</b> Development is the stage in the chain of changes through which a child passes from the embryonic stage to adulthood.</div>
+    <div class="quote-block"><b>Hurlock:</b> Development is not limited to growth alone but is an organised, sequential change leading toward maturity, through which new traits and abilities emerge.</div>
+    <div class="quote-block"><b>Gesell:</b> Development is a kind of change in which children develop new characteristics and abilities.</div>
+    <div class="quote-block"><b>E.J. Gordon:</b> Development is a process that continues from birth until full development is reached.</div>
+    <div class="quote-block"><b>Skinner:</b> Development is a continuous and slow-slow process.</div>
+
+    <h3>Dimensions of development</h3>
+    <p>Piaget gave us the pre-operational stage of development. The first stage of growth and development is physical development, which fans out into: physical, linguistic, social, moral, cognitive/mental, and emotional development.</p>
+
+    <h3>Stages of Development — several classification schemes</h3>
+    <div class="note"><span class="label">Teacher's note</span> Different psychologists sliced the same lifespan into stages differently — none is "more correct," they simply serve different research purposes. For exams, learn the age brackets against the psychologist's name; for teaching, just remember the broad rhythm: infancy → childhood → adolescence → adulthood.</div>
+
+    <h4>Detailed stage classification</h4>
+    <table>
+      <tr><th>Stage</th><th>Age range</th></tr>
+      <tr><td>Prenatal period — Ovum stage</td><td>Conception to 2 weeks</td></tr>
+      <tr><td>Prenatal — Embryonic stage</td><td>2 to 8 weeks</td></tr>
+      <tr><td>Prenatal — Fetal stage</td><td>8 weeks to birth</td></tr>
+      <tr><td>Neonatal period</td><td>Birth to 15 days</td></tr>
+      <tr><td>Infancy</td><td>15 days to 2 years</td></tr>
+      <tr><td>Early childhood (pre-school years)</td><td>2 to 6 years</td></tr>
+      <tr><td>Middle childhood (school years)</td><td>7 to 11 years</td></tr>
+      <tr><td>Puberty</td><td>11 to 14 years</td></tr>
+      <tr><td>Adolescence</td><td>14 to 18 years</td></tr>
+      <tr><td>Early adulthood</td><td>18 years and above</td></tr>
+      <tr><td>Middle adulthood</td><td>Early 40s to early 60s</td></tr>
+      <tr><td>Late adulthood</td><td>From the early 60s</td></tr>
+    </table>
+
+    <div class="grid-2">
+      <div class="card"><h5>Ernest Jones</h5>
+        Infancy: birth–5/6 yrs · Childhood: 6–12 yrs · Adolescence: 12–18 yrs · Adulthood: 18+ yrs
+      </div>
+      <div class="card"><h5>Ross</h5>
+        Infancy: 1–3 yrs · Early childhood: 3–6 yrs · Later childhood: 6–12 yrs · Adolescence: 12–18 yrs
+      </div>
+    </div>
+    <p><b>Colesnik</b> further split the early years: birth→birth (prenatal), birth–3/4 weeks (neonatal), 1–15 months (early infancy), 15–30 months (later infancy), 2.5–5 yrs (early childhood), 5–9 yrs (middle childhood), 9–12 yrs (later childhood), 12–15 yrs (adolescence), 15–21 yrs (later adolescence).</p>
+    <p><b>Kohl</b> extended the ladder right up through old age: infancy (birth–2) → early childhood (3–5) → later childhood (6–12) → early adolescence (13–14) → mid-adolescence (15–16) → later adolescence (17–18) → early adulthood (19–20) → early maturity (21–34) → mid-maturity (35–49) → later maturity (50–64) → early old age (65–74) → old age (75+).</p>
+    <p>Since studying every scheme above isn't practical, for learning purposes development is usually simplified into three working stages: <b>Infancy</b> (birth–5 yrs), <b>Childhood</b> (6–12 yrs), <b>Adolescence</b> (12–18 yrs).</p>
+
+    <h3>Infancy (0–5 years)</h3>
+    <p>The first stage of human development after birth, considered the foundation of human life. Technically split into Infancy (birth–2 yrs) and Pre-Childhood (2–6 yrs).</p>
+    <div class="note"><span class="label">Word origin</span> "Infant" comes from Latin <i>in</i> ("without") + <i>fari</i> ("to speak") — literally "one who cannot yet speak." A child is called an "infant" precisely during the stage when they cannot yet form words grammatically.</div>
+    <p><b>Sigmund Freud:</b> This stage lays the foundation of the child's future life. <b>Valentine:</b> Infancy is the ideal period for learning.</p>
+    <p>Infancy is also called: the sensorimotor stage, the stage of psychosexual development, the shift from a helpless to a mobile social being, the stage of pre-moral development, the narcissistic/self-absorbed stage. Pre-childhood is also called: the pre-primary-school stage, the stage of language development, the pre-operational stage, the intuitive stage, the stage of conflicting moods, and the stage of the Oedipus and Electra complexes.</p>
+    <p>In infancy, a child's activity is driven by instinct; infancy is a self-centred stage.</p>
+
+    <h4>Sixteen features of infancy</h4>
+    <ol>
+      <li>The stage of the social smile</li>
+      <li>The ideal period for learning</li>
+      <li>The foundation stone of future life</li>
+      <li>The most important period of life</li>
+      <li>Rapid physical development</li>
+      <li>Rapid growth in mental abilities</li>
+      <li>Learning by imitation</li>
+      <li>Tendency to repeat</li>
+      <li>Strong curiosity</li>
+      <li>Feelings of dependency</li>
+      <li>Feelings of self-love</li>
+      <li>Emotions expressed openly/as-is</li>
+      <li>Development of social feeling</li>
+      <li>Behaviour based on instincts</li>
+      <li>Emergence of sexual awareness — around 4–5 years, boys and girls develop what are called the Oedipus (boys) and Electra (girls) complexes</li>
+      <li>Absence of moral sense</li>
+    </ol>
+    <div class="note"><span class="label">Teacher's note</span> Item 15 is a classic Freudian idea often quoted in these guides: the Oedipus complex is described as attachment to the mother and rivalry with the father; the Electra complex as attachment to the father and rivalry with the mother. Treat this as a historical psychoanalytic theory to know for exam purposes, not a settled scientific fact — modern developmental psychology does not treat it as standard practice guidance.</div>
+
+    <h3>Childhood (6–12 years)</h3>
+    <p>The second stage of human development, lasting roughly 6 to 12 years. In this stage the child forms habits, interests, and behaviours that later become difficult to change. Pritchard Ross called it a stage of "pseudo-maturity" — also described as the "untidy stage" and the stage of liveliness. It's also called the "primary-school stage."</p>
+    <h4>Ten developmental features of childhood</h4>
+    <ol>
+      <li>Physical and mental development stabilises (hence "pseudo-maturity")</li>
+      <li>Growth in mental ability</li>
+      <li>Strong curiosity — focused on "why" and "how" questions</li>
+      <li>Development of self-reliance</li>
+      <li>Interest in creative work</li>
+      <li>Development of group feeling</li>
+      <li>Sense of competition</li>
+      <li>Beginning of formal schooling</li>
+      <li>Development of collecting tendencies</li>
+      <li>Development of same-gender bonding/friendship</li>
+    </ol>
+
+    <h3>Adolescence (13–18 years)</h3>
+    <p>Western scholars call it the "Teen Age." It's a complex developmental stage because the adolescent must adjust to a new sense of self, treated neither as a child nor an adult.</p>
+    <p><b>Stanley Hall</b> called it a period of "storm, stress, and struggle" — also a "problem stage." Juvenile crime peaks during this stage. Adolescence is also called: the period of transformation, the spring of life, the golden age of life, a time of emotional turbulence, the difficult period of life, the bridge between childhood and adulthood, and the stage of close friendships.</p>
+    <h4>Eight features of adolescence</h4>
+    <ol>
+      <li>Rapid physical development</li>
+      <li>Intellectual development</li>
+      <li>Rebellious tendencies</li>
+      <li>Emerging sexuality</li>
+      <li>Imaginativeness</li>
+      <li>Hero-worship</li>
+      <li>Sense of self-respect</li>
+      <li>Variability in behaviour</li>
+    </ol>
+    <p><b>Stanley Hall:</b> "Adolescence is like a new birth, because it displays every good and bad trait of a person's life." Intelligence reaches its maximum development during adolescence.</p>
+  </section>
+
+  <!-- CHAPTER 3 -->
+  <section class="chapter" id="ch3">
+    <div class="chap-label">Chapter 3</div>
+    <h2>Child Development</h2>
+    <p>The systematic study of child development in India began around 1930. Initially, "child study" was used instead of "child development," and it covered only childhood. But because physical and mental development continues into adolescence, the scope was extended to birth–18 years (maturity), and the subject was renamed <b>Child Development</b>.</p>
+    <p>In plain terms: child development is the study of the biological and psychological changes — mainly physical, mental, cognitive, and linguistic — that a child undergoes from birth through the end of adolescence.</p>
+
+    <h3>Key definitions</h3>
+    <div class="quote-block"><b>Hurlock (1978):</b> Child development research focuses mainly on changes in a child's appearance, behaviour, interests, and goals that occur as the child moves from one developmental period to the next.</div>
+    <div class="quote-block"><b>Berk (2000):</b> Child development psychology is a branch that explains all the changes a person goes through from before birth up to maturity.</div>
+    <div class="quote-block"><b>Crow &amp; Crow (1958):</b> Child psychology is the scientific study of a person's development from the beginning of the prenatal period to the early stage of adolescence.</div>
+    <div class="quote-block"><b>James Drever (1968):</b> Child psychology is the branch of psychology that studies the human being developing from birth to maturity.</div>
+    <div class="quote-block"><b>Eysenck (1972):</b> Child psychology concerns the development of psychological processes in the child — covering the prenatal stage, birth, infancy, childhood, adolescence, and up to maturity.</div>
+
+    <h3>Scope of Child Development</h3>
+    <div class="grid-2">
+      <div class="card">Study of the child's different developmental stages</div>
+      <div class="card">Study of all dimensions of development</div>
+      <div class="card">Study of factors that influence development</div>
+      <div class="card">Study of individual differences</div>
+      <div class="card">Evaluation of personality</div>
+    </div>
+
+    <h3>Principles of Child Development</h3>
+    <h4>1. Principle of continuity</h4>
+    <p>Development proceeds continuously from the prenatal stage until death — sometimes slow, sometimes rapid — but generally without any sudden change.</p>
+    <h4>2. Principle of individual differences</h4>
+    <p>Children of the same age show mutual variation in physical, mental, social, emotional, and linguistic development, according to their own individuality.</p>
+    <h4>3. Principle of modifiability</h4>
+    <p>Through nutrition and education, the pace and direction of growth and development can be steered toward a fixed direction, and desired outcomes achieved.</p>
+    <h4>4. Principle of direction of development</h4>
+    <p><b>Kuppuswamy</b> explained that development proceeds in two orders:</p>
+    <div class="grid-2">
+      <div class="card"><h5>Cephalocaudal order</h5>Development proceeds from head to foot: head first, then trunk, then limbs (arms/legs), then fingers and nails. A baby first controls the head and hands before controlling the legs. <i>Example:</i> the chest and abdomen become active before the extremities.</div>
+      <div class="card"><h5>Proximodistal order</h5>Also called the "near-to-far" principle. Development moves from the centre outward — the spinal column develops first, then the arms, then the fingers, and finally coordinated movement.</div>
+    </div>
+    <h4>5. Principle of integration</h4>
+    <p>There is mutual coordination between the development of different organs; integration of separate parts makes movement smooth and easy.</p>
+    <h4>6. Principle of cyclical (spiral) progress</h4>
+    <p>Development doesn't move in a straight line but proceeds in a spiral: the child moves forward, then steps back to stabilise what's already been gained, before advancing further — reinforcing development at each turn.</p>
+    <h4>7. Principle of sequence</h4>
+    <p>Motor and language development follow a fixed order — e.g., developmental stages proceed: prenatal → infancy → childhood → adolescence → adulthood. Similarly, language develops: listening → speaking → reading → writing.</p>
+    <ul>
+      <li><b>Heredity-environment interaction principle:</b> development is a result of the interaction between the two.</li>
+      <li><b>Predictability principle:</b> a child's future development can be forecast by observing their present development.</li>
+      <li><b>Simple-to-complex principle:</b> a child performs simple activities first, more complex ones later.</li>
+      <li>The law of cephalocaudal development is a chief law of physical development.</li>
+    </ul>
+    <h4>8. Principle of the unevenness of growth rate</h4>
+    <p>The pace and rate of development are not uniform: rapid in infancy, slower afterward, and then quick again in adolescence before slowing once more.</p>
+  </section>
+
+  <!-- CHAPTER 4 -->
+  <section class="chapter" id="ch4">
+    <div class="chap-label">Chapter 4</div>
+    <h2>Heredity</h2>
+    <p>Traits inherited from parents and ancestors — physical, mental, and behavioural — are collectively called <b>heredity</b>. In biological terms, heredity is the sum total of all potential traits present in a fertilised egg.</p>
+
+    <h3>Definitions</h3>
+    <div class="quote-block"><b>Woodworth:</b> Heredity includes everything present in a person not at birth, but at conception — roughly nine months before birth.</div>
+    <div class="quote-block"><b>James Drever:</b> The transmission of a parent's physical and mental characteristics to their offspring is heredity.</div>
+    <div class="quote-block"><b>Ruth Benedict:</b> Heredity is the name given to the traits a child receives from its parents.</div>
+    <div class="quote-block"><b>Douglas &amp; Holland:</b> A person's heredity includes all structures, physical traits, activities, or abilities they receive from their parents, other ancestors, or their species.</div>
+    <div class="quote-block"><b>Sorenson:</b> Genes determine a child's major traits and qualities.</div>
+    <div class="quote-block"><b>Terman:</b> Heredity influences intelligence.</div>
+    <div class="quote-block"><b>Dinkmeyer:</b> Hereditary factors are innate traits present from the time of the child's birth.</div>
+    <div class="quote-block"><b>B.N. Jha:</b> Heredity is the complete sum of a person's innate traits.</div>
+    <div class="quote-block"><b>P. Ginsberg:</b> In nature, every act of generation is the transmission of certain biological or psychological traits from parent to offspring — this organised transmission of traits is what we call heredity.</div>
+    <div class="quote-block"><b>Radcliffe-Brown</b> treats heredity as a "jural concept" — a legal-like idea of inherited entitlement.</div>
+    <p>In short: heredity is the sum total of a person's innate/inborn traits.</p>
+
+    <h3>The mechanism of heredity</h3>
+    <p>When the male's sperm reaches the female's egg (ovum) in the uterus and fertilises it, that process is called <b>fertilisation</b>. Sperm and egg then combine to form a single fused cell, called a <b>zygote</b> — and from that moment, the child's existence begins and develops as an embryo.</p>
+
+    <h4>Zygote</h4>
+    <p>A thick fluid made of cytoplasm, containing a nucleus, which itself contains <b>chromosomes</b>.</p>
+
+    <h4>Chromosomes</h4>
+    <ul>
+      <li>Thread-like structures inside every cell's nucleus, always occurring in pairs. A fertilised cell has 23 pairs (46 total) of chromosomes — half from the father, half from the mother.</li>
+      <li>Each chromosome carries tiny units called <b>genes</b>.</li>
+      <li><b>N.L. Munn:</b> "Our countless inherited traits reside within these 46 chromosomes. The hereditary zones hidden in chromosomes are called 'genes' — the determiners of heredity."</li>
+      <li>In the male's 23rd pair, one chromosome is a long, rod-shaped <b>X chromosome</b>, while the other is a small, round <b>Y chromosome</b>. Because of this asymmetry, males are called <b>heterogametic</b>.</li>
+      <li>In the female's 23rd pair, both chromosomes are homologous (identical, long, rod-shaped X chromosomes). Because of this similarity, females are called <b>homogametic</b>.</li>
+      <li>A normal male has XY chromosomes; a normal female has XX chromosomes.</li>
+    </ul>
+
+    <div class="note"><span class="label">Quick facts worth remembering</span>
+    <ul style="margin-bottom:0;">
+      <li>The Y chromosome is responsible for a baby being born male.</li>
+      <li>A girl's sex results from the pairing of an X from the father with an X from the mother.</li>
+      <li>Twins born from separate zygotes are called "fraternal twins."</li>
+      <li>The XY chromosome combination is responsible for a boy being born.</li>
+      <li>Biologically, the father's contribution determines the child's sex.</li>
+      <li>The gene is the fundamental unit of heredity.</li>
+      <li>Genes are responsible for the development of traits in organisms.</li>
+      <li>Heredity determines a child's sex.</li>
+      <li>A child high or low in a trait (e.g., verbal ability) at one point tends to stay that way later — underlining the importance of heredity.</li>
+      <li>Eye colour is influenced by hereditary factors.</li>
+      <li>Sex is a biological structure.</li>
+    </ul></div>
+
+    <h4>Genes</h4>
+    <ul>
+      <li>The basic unit of heredity is called a gene.</li>
+      <li>The determinative elements found within chromosomes are called genes.</li>
+      <li><b>Anastasi:</b> A gene is the carrier of hereditary traits, which are transmitted in some form, always.</li>
+      <li>Genes are the true carriers of heredity; the main biomolecules involved are <b>DNA</b> (Deoxyribonucleic Acid) and <b>RNA</b> (Ribonucleic Acid).</li>
+      <li>A pair of genes occupying a specific location on a chromosome and governing the same trait is called an <b>allele</b>.</li>
+      <li><b>Phenotype</b> — the observable physical and psychological trait a person displays.</li>
+      <li><b>Genotype</b> — the underlying genetic makeup; invisible.</li>
+    </ul>
+
+    <h3>Abnormal hereditary characteristics</h3>
+    <p>This category covers traits or disorders (abnormalities) that a person inherits down the family line.</p>
+    <table>
+      <tr><th>Condition</th><th>Key facts</th></tr>
+      <tr><td><b>Down Syndrome</b></td><td>Discovered by Langdon Down (1866). Affected individuals have 47 chromosomes — an extra chromosome on the 21st pair (hence also called Trisomy 21). Caused by an error during cell division; often accompanied by heart defects. Features: short stature, round head, a groove in the tongue, mouth partly open.</td></tr>
+      <tr><td><b>Turner Syndrome</b></td><td>Occurs only in females. Absence of an X chromosome (XO). Underdeveloped ovaries; infertility; absence of secondary sexual characteristics.</td></tr>
+      <tr><td><b>Fetal Alcohol Syndrome</b></td><td>If a mother drinks heavily during pregnancy, the child is at risk of this syndrome.</td></tr>
+      <tr><td><b>Klinefelter Syndrome</b></td><td>Affected males have an extra copy of the X chromosome (XXY). Feminising traits (gynecomastia — breast development resembling females); infertility.</td></tr>
+      <tr><td><b>Haemophilia</b></td><td>First described in detail by Dr. John Conrad Otto. A sex-linked bleeding disorder; lack of a single protein needed for clotting; even minor cuts bleed persistently. Passed to sons through carrier (heterozygous) mothers. Queen Victoria and many of her descendants were famously affected.</td></tr>
+      <tr><td><b>Colour blindness</b></td><td>First described by John Dalton (1794) — hence also called "Daltonism." A protein defect; a sex-linked recessive disorder. A colour-blind person cannot distinguish red and green. Present in about 8% of men but only about 0.4% of women. The (heterozygous carrier) mother need not be colour-blind herself.</td></tr>
+    </table>
+
+    <h3>Theories/principles of heredity</h3>
+    <h4>Theory of Continuity of Germplasm</h4>
+    <p>Proposed by <b>Weismann</b>. According to Weismann, the human body has two kinds of cells: <b>somatic cells</b> (body structure) and <b>germ cells</b> (the "germ line" passed down through generations). Parents/ancestors are merely "trustees" of the germ cells they pass on, generation after generation — which is why humans always give rise to human offspring. Weismann also proposed the "theory of non-transmission of acquired characters" — traits acquired during a lifetime are not passed to the next generation.</p>
+
+    <h4>Biometry Theory (Galton)</h4>
+    <p><b>Francis Galton</b> — often called the father of eugenics — proposed in 1875 that a child is only as capable as their ancestors were. According to Galton, a person's intelligence and other mental abilities are shaped by their heredity, and traits come not only from parents but also from grandparents, great-grandparents and other ancestors, in diminishing proportion with each generation (½, ¼, ⅛, 1/16...).</p>
+    <p>Galton's formula: Heredity = ½ (parents' contribution) + ¼ (grandparents' contribution) + ⅛ (great-grandparents' contribution) + …</p>
+
+    <h4>Darwin's Theory — Natural Selection</h4>
+    <p>Charles Darwin proposed the <b>Principle of Natural Selection</b>: species reproduce → struggle for existence begins → environmental pressures select adapted traits → unsuitable traits disappear while beneficial traits get passed on → new species emerge through gene-level change and accumulated small variations ("survival of the fittest" is Darwin's core idea).</p>
+
+    <h4>Lamarck's Theory — Inheritance of Acquired Characteristics</h4>
+    <p>Proposed in 1809 by <b>Jean-Baptiste de Lamarck</b>. Environment directly affects every organism, changing its structure and behaviour; organs used more become more developed, while organs used less atrophy. Lamarck famously explained the giraffe's long neck as a result of stretching to reach leaves — a trait he believed became hereditary over generations, since giraffe ancestors were not originally so tall. (McDougall, Pavlov, and Harrison also supported the inheritance of acquired traits.)</p>
+
+    <h4>Mendel's Theory of Heredity</h4>
+    <p>Between 1856–1863, in Brunn (in Austria, then part of the Austro-Hungarian Empire, now in the Czech Republic), the friar <b>Gregor Johann Mendel</b> studied heredity and laid the foundation of modern genetics. He is called the <b>Father of Genetics</b>. His work was initially ignored, but gained recognition in 1900 through the efforts of Hugo de Vries, Carl Correns, and Erich von Tschermak, after which his principles were named the <b>Cardinal Principle of Heredity</b>.</p>
+    <p>Mendel experimented with garden pea plants (<i>Pisum sativum</i>), crossing pure tall varieties with pure short (dwarf) varieties. All hybrid offspring were tall; when these hybrids were self-pollinated, both tall and short plants reappeared in the next generation.</p>
+
+    <h5>Mendel's principles</h5>
+    <ul>
+      <li><b>Principle of Dominance:</b> When two contrasting varieties are crossed, the hybrid offspring shows the trait that is dominant.</li>
+      <li><b>Principle of Segregation:</b> Traits present in the first hybrid generation do not disappear — they resurface, segregated, in later generations. This is clearly observed in hereditary disorders.</li>
+      <li><b>Principle of Independent Assortment:</b> The inheritance of one trait (controlled by one pair of genes) is transmitted independently of another trait. Example: a pea plant's flower colour is independent of pod shape or stem length.</li>
+    </ul>
+
+    <h3>Laws of heredity</h3>
+    <h4>Law of Resemblance — "Like begets like"</h4>
+    <p>Children tend to resemble their parents. Example: intelligent/dull parents tend to have intelligent/dull children; attractive parents tend to have attractive children.</p>
+    <h4>Law of Variation</h4>
+    <p>This complements the Law of Resemblance: offspring need not be exactly identical to their parents. <b>Sorenson</b> attributed these variations to the characteristics of the parents' germ cells, which combine in different ways to make each child distinct.</p>
+    <h4>Law of Selective Traits</h4>
+    <p>Only certain traits are hereditary — not everything is passed down. Some traits are instead acquired or learned through environmental interaction (e.g., eye colour, blood type, colour-blindness, and facial structure are hereditary).</p>
+  </section>
+
+  <!-- CHAPTER 5 -->
+  <section class="chapter" id="ch5">
+    <div class="chap-label">Chapter 5</div>
+    <h2>Heredity vs. Environment</h2>
+    <p><b>Environment</b> refers to everything surrounding a person: their people, culture, home, and physical surroundings. The word breaks down (in the Hindi original) as "that which encircles all around."</p>
+    <div class="quote-block"><b>Ross:</b> Environment is the outside force that influences us.</div>
+    <div class="quote-block"><b>Woodworth:</b> Environment includes all external factors that have influenced a person since the start of life.</div>
+    <div class="quote-block"><b>Douglas &amp; Holland:</b> Environment is used to collectively describe all the outside forces, influences, and conditions that affect the life, nature, behaviour, growth, development, and maturity of living beings.</div>
+
+    <h3>The nature–nurture debate</h3>
+    <p>With Galton's work came a long-running debate: does heredity or environment influence a child's development more? <b>Hebb and Anastasi</b> considered this an unreasonable, ill-posed question — because, in their view, development cannot happen without hereditary material, nor can it happen without a suitable environment to act within. Neither can be viewed apart from the other.</p>
+    <div class="quote-block"><b>MacIver &amp; Page:</b> "Every event of life is the result of both. Neither is any less necessary than the other for the outcome. Neither can ever be removed nor separated out."</div>
+    <p><b>Woodworth</b> illustrated the interdependence using the metaphor of <b>seed and soil</b>: a good harvest needs both the right seed and the right land — remove either, and the harvest suffers. Likewise, healthy human development depends on both heredity and environment. <b>Crow &amp; Crow</b> agreed: a person is formed by the integration of biological inheritance (heredity) and social inheritance (environment).</p>
+    <p><b>Woodworth &amp; Marquis</b> compared the two to the base and height of a rectangle — just as a rectangle's area is the <i>product</i> (not sum) of base and height, a person's personality is the product of heredity and environment: <b>Development = Heredity × Environment</b>.</p>
+
+    <div class="note"><span class="label">Teacher's note</span> This multiplication metaphor is the exam-favourite takeaway: heredity and environment don't simply add up — they multiply, and if either factor is zero (no genetic potential, or a completely deprived environment), development suffers disproportionately. Practically, it tells us as teachers: we cannot change a child's heredity, but we have real leverage over their environment.</div>
+
+    <h4>The nature–nurture debate, restated</h4>
+    <p>Nature (heredity) vs. Nurture (environment) — is personality development driven more by nature or nurture? <b>Douglas &amp; Holland</b> championed heredity's importance; the behaviourist <b>Watson</b> championed environment/nurture.</p>
+    <p><b>Sex-linked developmental note:</b> girls' mental development tends to proceed faster, and girls tend to mature earlier, than boys of the same age.</p>
+
+    <h3>Environmental factors that shape a child</h3>
+    <ul>
+      <li><b>Family:</b> a child's development depends on their position/status within the family. Younger children often learn faster than their older siblings. Family plays a very large role in shaping development.</li>
+      <li><b>School:</b> going to school essentially means beginning development. Before school, a child is largely self-centred. At school, children learn the value of hard work and discipline, and also learn social responsibilities — school is thus an active agent of a child's socialisation. <b>John Dewey</b> observed that without formal means, transmitting the achievements and skills of this complex society isn't possible; school opens a door to experiences that a child cannot gain simply by living informally alongside others.</li>
+      <li><b>Nutrition:</b> Sorenson called good nutrition "the best friend of physical development."</li>
+      <li><b>Endocrine glands:</b> the thyroid gland's secretion relates to a child's height; the parathyroid gland's secretion relates to bone and teeth development; the reproductive glands determine masculine/feminine traits.</li>
+      <li><b>Sleep and rest:</b> 12 hours is considered adequate in infancy, 10 hours in childhood, and 8 hours in adolescence. Adequate rest is essential, since fatigue hinders development.</li>
+      <li><b>Other factors:</b> Rousseau valued the family highly in education: "The family is a fundamentally natural institution and can give a child the best education." Froebel valued the home, believing mothers are ideal teachers and that informal home education is the most powerful and natural form of education. Other influential factors: intelligence, illness and injury, community, conditions of upbringing/protection, family, and mass media.</li>
+    </ul>
+  </section>
+
+  <!-- CHAPTER 6 -->
+  <section class="chapter" id="ch6">
+    <div class="chap-label">Chapter 6</div>
+    <h2>What Is Learning?</h2>
+    <p>Learning (or "sikhna") is a highly ordinary yet lifelong process. It's a universal experience: a child starts learning right after birth and, knowingly or unknowingly, keeps learning something throughout life.</p>
+    <p><b>Learning = a relatively permanent change in behaviour</b>, and this change comes through experience (one's own, or someone else's) and/or training.</p>
+    <p>Learning is a mental activity a person adopts deliberately in order to successfully achieve a goal.</p>
+
+    <h3>Conditions for learning</h3>
+    <ol>
+      <li>The learner's motivation, or "readiness to learn"</li>
+      <li>Making multiple responses — trial and error</li>
+      <li>Reinforcement</li>
+      <li>Practice</li>
+    </ol>
+
+    <h3>The process of learning</h3>
+    <p>Motivation (arousal of desire) → making multiple responses → reinforcement → practice → retention.</p>
+    <p><b>Dershell's</b> five stages of the learning process: a motivated individual → obstacles along the way → various responses → the correct response → attainment of the goal.</p>
+
+    <h3>Definitions of learning</h3>
+    <div class="quote-block"><b>Skinner:</b> Learning is a process of progressive adaptation in behaviour.</div>
+    <div class="quote-block"><b>Woodworth:</b> The process of acquiring new knowledge and new responses is the process of learning.</div>
+    <div class="quote-block"><b>Crow &amp; Crow:</b> Learning is the acquisition of habits, knowledge, and attitudes.</div>
+    <div class="quote-block"><b>Gates and others:</b> Learning is modification/change in behaviour through experience and training.</div>
+    <div class="quote-block"><b>Cronbach:</b> Learning is expressed as a change in behaviour as a result of experience.</div>
+    <div class="quote-block"><b>Guilford:</b> Learning is change in behaviour as a result of experience and training.</div>
+    <div class="quote-block"><b>John Dewey:</b> Learning by doing is meaningful learning.</div>
+    <p>Learning through practice is the refinement of behaviour.</p>
+
+    <h3>Characteristics of learning</h3>
+    <p>Per Yoakam &amp; Simpson: change-oriented, lifelong, continuous, active, deliberate, purposeful.</p>
+    <ul>
+      <li>Learning is a change in behaviour.</li>
+      <li>Acquired behaviour tends to be permanent in nature.</li>
+      <li>Learning is a universal process.</li>
+      <li>Learning results from activity.</li>
+      <li>Learning aids the all-round development of personality.</li>
+      <li>Learning is a broad process spanning a wide field.</li>
+      <li>Learning is development; learning is adjustment; learning is the organisation of experiences.</li>
+      <li>Learning results from environment.</li>
+      <li>The learning process is a fit between stimulus and response.</li>
+      <li>Learning is a complex and active process; it is both process and product.</li>
+    </ul>
+
+    <h3>Effective methods of learning</h3>
+    <div class="grid-2">
+      <div class="card"><h5>Learning by doing</h5>The most effective method of learning. Things we do ourselves are learned faster and retained more durably. <b>Dr. Mace:</b> "Memory resides not in the brain alone but in the body's organs — which is why we learn by doing."</div>
+      <div class="card"><h5>Imitation method</h5>Here the teacher becomes a model for the student. This process starts as early as infancy. <b>Haggard's</b> theory of learning-through-imitation shows that imitation simplifies learning.</div>
+      <div class="card"><h5>Observation method</h5>A powerful, wide-reaching method, since observation continues even outside school. Per Yoakam &amp; Simpson, observation is a means of gathering information, collecting source material, and forming a correct view of objects and events. Essential in geography teaching.</div>
+      <div class="card"><h5>Experiment method</h5>Tests the truth of a principle through experimentation; lets a child discover new facts.</div>
+      <div class="card"><h5>Group method</h5>Students generally enjoy working in groups, and group learning can be more effective. <b>Colesnik:</b> group methods are far more effective than individual methods at motivating students, aiding mental health, social adjustment, behaviour improvement, self-reliance and cooperation.</div>
+      <div class="card"><h5>Play-way method</h5>Credit for introducing play into early education goes to <b>Henry Caldwell Cook</b> (author of <i>The Play Way</i>): "only that work is worth doing which is really play, because by play I mean something done with the whole heart."</div>
+    </div>
+
+    <h3>Play-based teaching methods</h3>
+    <table>
+      <tr><th>Method</th><th>Founder</th></tr>
+      <tr><td>Kindergarten Method</td><td>Froebel</td></tr>
+      <tr><td>Montessori Method</td><td>Maria Montessori</td></tr>
+      <tr><td>Project Method</td><td>Kilpatrick</td></tr>
+      <tr><td>Heuristic Method</td><td>Armstrong</td></tr>
+      <tr><td>Dalton Method</td><td>Helen Parkhurst</td></tr>
+    </table>
+    <p>In the Dalton Method, students work without a fixed timetable, classroom rules, or test restrictions — its three pillars are sociality, freedom, and individual work.</p>
+
+    <h3>Types of learning</h3>
+    <p>Learning includes many kinds of responses — problem-solving learning, emotional learning, verbal learning, conceptual learning, and more.</p>
+    <div class="grid-2">
+      <div class="card"><h5>Ausubel (1968) — four kinds</h5>Reception learning, Discovery learning, Rote learning, Meaningful learning</div>
+      <div class="card"><h5>Robert Gagné (1965) — 8 hierarchical types</h5>From "The Conditions of Learning": Signal learning → Stimulus-response learning → Chaining → Verbal association → Discrimination learning → Concept learning → Rule/principle learning → Problem-solving learning</div>
+      <div class="card"><h5>By educational purpose</h5>Cognitive learning · Affective learning · Psychomotor learning</div>
+      <div class="card"><h5>Marx (1976) — 5 types</h5>A mix of external-response-dominant and internal-response-dominant processes: professional-skill learning, conditioning, verbal learning, cognitive learning, insight learning</div>
+    </div>
+
+    <div class="note"><span class="label">Teacher's note</span> <b>Fagin:</b> learning is a sequence of mental events or states that brings about change in learners. Learning is, at bottom, a process by which a person, through interactions with a situation, revises their behaviour — bringing about desired change, healthy adjustment, and proper growth.</div>
+  </section>
+
+  <!-- CHAPTER 7 -->
+  <section class="chapter" id="ch7">
+    <div class="chap-label">Chapter 7</div>
+    <h2>Learning Curves &amp; the Learning Plateau</h2>
+    <p>When we try to learn something new, our pace of learning is never constant across the whole process — it speeds up, slows down, fluctuates. Plotting this pace on graph paper produces a curve — the <b>learning curve</b>.</p>
+    <div class="quote-block"><b>Gates and others:</b> A learning curve graphs the amount, rate, and extent of progress achieved through practice.</div>
+    <div class="quote-block"><b>Skinner:</b> A learning curve is an account of the progress or decline in a given activity.</div>
+    <p>The X-axis represents the amount of practice/trials; the Y-axis represents the degree of learning achieved.</p>
+
+    <h3>Types of learning curves</h3>
+    <table>
+      <tr><th>Curve</th><th>Also known as</th><th>What it shows</th></tr>
+      <tr><td><b>Straight-line curve</b></td><td>Curve of equal returns; curve of constant performance; linear acceleration curve</td><td>Learning changes at a constant rate over time — rare in practice.</td></tr>
+      <tr><td><b>Convex curve</b></td><td>Negatively accelerated curve; curve of decreasing return</td><td>Fast learning at first, slowing with practice, eventually flattening into a plateau — meaning further practice yields no more gains. Common in learning physical/motor skills; the most commonly observed curve in practice.</td></tr>
+      <tr><td><b>Concave curve</b></td><td>Positively accelerated curve; curve of increasing return</td><td>Slow start, but as familiarity builds, learning accelerates sharply. Rarely observed in reality — mostly theoretical.</td></tr>
+      <tr><td><b>Mixed curve</b></td><td>S-curve; sigmoid curve</td><td>Not a separate curve at all — simply a blend of the concave and convex curves; pace alternates slow → fast → slow → fast.</td></tr>
+    </table>
+
+    <h3>Why the ups and downs happen</h3>
+    <p>Two learning curves are rarely identical; the fluctuations come mainly from factors affecting learning: excitement, exercise, stimulation, adaptation, fatigue, and readiness.</p>
+
+    <h3>The learning plateau</h3>
+    <p>During the learning process, a stage sometimes arrives where, despite continued effort or practice, there's no growth or progress in the amount learned. On the graph the curve appears flat — like a plateau. This is the <b>learning plateau</b>.</p>
+    <div class="quote-block"><b>Ross:</b> A plateau is a key feature of the learning process — it marks a period when no progress in learning is occurring.</div>
+    <div class="quote-block"><b>Skinner:</b> A plateau is a horizontal spread in which there is no visible sense of progress in learning.</div>
+    <div class="quote-block"><b>Ruch:</b> A plateau is a state in which learning seems absent — the curve appears flat.</div>
+
+    <h4>Causes of plateaus</h4>
+    <div class="quote-block"><b>Rex &amp; Knight:</b> Plateaus arise when a person reaches the end of one stage of learning and is transitioning into the next.</div>
+    <p>Other causes include: fatigue, task complexity, an unsuitable learning method, physical limitations, disruption/interruption, lack of practice, dwindling enthusiasm, lack of motivation, lack of interest, and the conflict between an old habit and a new one.</p>
+
+    <h4>Overcoming plateaus</h4>
+    <div class="quote-block"><b>Sorenson:</b> "Perhaps there is no method that eliminates plateaus entirely, but their number and duration can be reduced."</div>
+    <ul>
+      <li>Motivate and encourage the learner</li>
+      <li>Use interesting, engaging teaching methods</li>
+      <li>Work to break bad habits and build good ones</li>
+      <li>Organise the syllabus/content properly</li>
+      <li>Allow rest</li>
+      <li>Keep enthusiasm for learning alive</li>
+      <li>Create a suitable learning environment</li>
+    </ul>
+    <div class="note"><span class="label">Teacher's note</span> When a student hits a plateau, resist the instinct to just push harder. Ask instead: are they fatigued, bored, or simply consolidating a skill before the next leap? A plateau is often the quiet phase right before the next visible jump — don't mistake it for failure.</div>
+  </section>
+
+  <!-- CHAPTER 8 -->
+  <section class="chapter" id="ch8">
+    <div class="chap-label">Chapter 8</div>
+    <h2>Transfer of Learning</h2>
+    <p>It's commonly observed that once an organism learns a task, learning other, similar tasks becomes much easier and more convenient. When attempting something new, prior knowledge or experience plays an important role. In plain terms, applying prior knowledge/experience to a new situation is <b>transfer of learning</b>. Example: learning to ride a bicycle makes it easier to later learn to ride a motorcycle.</p>
+
+    <div class="quote-block"><b>Sorenson:</b> Through transfer of learning, a person learns up to the extent that abilities gained in one situation assist in another.</div>
+    <div class="quote-block"><b>Peterson:</b> Transfer of learning means applying an idea in a new field.</div>
+    <div class="quote-block"><b>Crow &amp; Crow:</b> Using knowledge, skills, thinking habits, or experience gained in one area of learning in a different area is generally called "transfer of training."</div>
+
+    <h3>Types of transfer</h3>
+    <div class="grid-2">
+      <div class="card"><h5>Positive transfer</h5>Prior knowledge/training makes learning a new task easier. Example: someone who can ride a bicycle picks up motorcycling easily; prior maths knowledge helps in solving statistics problems.</div>
+      <div class="card"><h5>Negative transfer</h5>Prior knowledge/training makes learning the new task harder. Example: a habit of English typing interferes with learning Hindi typing; a car mechanic may struggle to repair a scooter. <b>Boring:</b> when learning one task makes learning another harder than it would otherwise be, that's negative transfer.</div>
+      <div class="card"><h5>Zero transfer</h5>Prior learning neither helps nor hinders the new task. Example: knowing typing has no effect on learning to paint; prior maths knowledge has no bearing on learning history. Some scholars don't count this as "transfer" at all — since it reflects the <i>absence</i> of transfer.</div>
+    </div>
+
+    <h3>Other named types of transfer</h3>
+    <ul>
+      <li><b>Unilateral transfer:</b> when, due to circumstances, a person uses only one part of the body — e.g., using the other hand for daily tasks after an injury to the usual hand.</li>
+      <li><b>Bilateral transfer:</b> when skill learned by the right hand also benefits the left hand — e.g., a right-handed writer's skill helps when learning to write with the left hand.</li>
+      <li><b>Vertical transfer:</b> e.g., in maths, numbers are learned first, then addition, then multiplication (since multiplication builds on addition).</li>
+      <li><b>Horizontal transfer:</b> knowledge/experience from one situation is applied in a similar kind of situation — e.g., knowledge of geography helps in understanding economics, or rules from one language help understand another.</li>
+    </ul>
+
+    <h3>Theories of transfer of learning</h3>
+    <h4>Theory of Mental Faculties</h4>
+    <p>A very old theory claiming transfer happens automatically, requiring no deliberate effort. Modern psychologists reject it; <b>William James</b> refuted it in 1890.</p>
+    <h4>Theory of Formal Mental Discipline</h4>
+    <p>Gates and others held that mental faculties can be uniformly and wholly developed through training and then applied skilfully in any situation. This view has not held up practically, and the theory is no longer accepted.</p>
+    <h4>Theory of Identical Elements — Thorndike</h4>
+    <p>Also called the "theory of similar elements" — an extended version of Thorndike's <b>Law of Analogy</b>. <b>Crow &amp; Crow</b> explain: "Transfer from one situation to another occurs in proportion to how similar the subject-matter, viewpoint, method, or purpose of the two situations are." Thorndike found that when a person picks out common elements from stored experiences to learn something new, they use them to learn new tasks more quickly.</p>
+    <h4>Theory of Generalisation — C.H. Judd (1908)</h4>
+    <p>"When a student thoroughly understands the general principle of a subject in science, the ability to transfer their training to other situations emerges." The process of forming shared features, principles, or relationship-building across specific situations is called <b>generalisation</b>.</p>
+    <h4>Theory of Ideals and Values — W.C. Bagley</h4>
+    <p>According to Bagley, generalisation and identical elements both contain ideals and values, which make transfer of learning successful.</p>
+
+    <h3>Factors affecting transfer of learning</h3>
+    <p>Generalisation, thinking, individual differences, teaching methods, correlation, and mental capacity all affect how well transfer occurs.</p>
+
+    <h3>Factors affecting learning generally</h3>
+    <div class="grid-2">
+      <div class="card">Intelligence</div><div class="card">Readiness to learn</div>
+      <div class="card">Maturity</div><div class="card">Aptitude</div>
+      <div class="card">Motivation</div><div class="card">Environment</div>
+      <div class="card">Teaching method</div><div class="card">Subject matter</div>
+      <div class="card">Physical health</div><div class="card">Mental health</div>
+    </div>
+
+    <h3>The process of learning, in practice</h3>
+    <p>Across history, educators tried many arrangements to make learning fruitful, practical, and useful — from the gurukul system to temple-based schooling to the classroom-based school concept. Over time, one strand of thinking emphasised rote memorisation with the teacher as the sole source and the student as passive recipient; another pushed for a two-way process — learning by doing, rooted in nature and the environment, rather than confined to textbooks. Distance education, television, radio and online learning are all extensions of this second strand.</p>
+
+    <h4>Key stages of the learning process</h4>
+    <ul>
+      <li><b>Needs of learners</b> — the teacher must know what kind of knowledge the learner actually needs.</li>
+      <li><b>Readiness to learn</b> — the teacher must gauge what a student is ready to learn, and teach exactly that for genuine success — this is the true art of teaching.</li>
+      <li><b>Situation</b> — the educational tools and supportive surroundings in which good teaching can happen.</li>
+      <li><b>Interaction</b> — mutual dialogue between teacher and students improves and enlivens the teaching process.</li>
+    </ul>
+    <h4>Conditions that make teaching and learning succeed</h4>
+    <ul>
+      <li><b>Motivation</b> — an inner keenness to learn is essential.</li>
+      <li><b>Psychological security</b> — the child feels safe and satisfied while learning/discovering something.</li>
+      <li><b>Experimentation</b> — learning is better when children do things and test processes themselves.</li>
+      <li><b>Feedback</b> — the teacher must know how far their teaching has actually reached the learner.</li>
+      <li><b>Practice</b> — repeating a process makes it clearer and simpler.</li>
+      <li><b>Relation-making</b> — without a warm educational relationship between teacher and student, full success is uncertain.</li>
+      <li><b>Integration</b> — until facts from multiple sources are integrated, the subject won't come together as a solution.</li>
+    </ul>
+
+    <div class="note"><span class="label">On errors — a valuable stage of learning</span>
+    A child's disposition from birth is varied, and their wishes are natural and spontaneous. Children are learning something, constantly, often without anyone teaching them directly — e.g., an infant learns to smile by imitating the mother, not automatically. Far from being purely negative, mistakes made by children are a mark of an active mind — sometimes rebelling against traditional ways of doing things. History is full of famous "mistakes" that led to major discoveries: James Watt's fascination with a kettle's lid rattling from steam eventually led (as this guide's anecdote goes) to the steam engine; Newton's puzzling over why an apple falls down rather than up led to the theory of gravity; Galileo's ideas about the Earth orbiting the Sun and rotating on its axis were once dismissed as errors before becoming foundational science. Children's errors are, therefore, an important stage in development and learning, and deserve to be taken seriously rather than simply corrected away.</div>
+  </section>
+
+  <!-- CHAPTER 9 -->
+  <section class="chapter" id="ch9">
+    <div class="chap-label">Chapter 9</div>
+    <h2>Learning Environment, Styles &amp; Strategies</h2>
+
+    <h3>What is a learning environment?</h3>
+    <p>Teaching is the process of providing a planned environment through whose various factors — via interaction — a student gains experience and achieves pre-decided learning outcomes. Components of the teaching environment: (a) subject-matter/learning experience; (b) the teacher/experience-provider; (c) the media and methods that deliver the experience; (d) the student, who is also a participant in this environment.</p>
+
+    <h3>Learning styles</h3>
+    <p>In any classroom, it's not possible for two students to learn the same thing in exactly the same way. To help each student and leverage their natural way of understanding, we must not only diagnose their learning style but also accept it. There are many learning styles, and no evidence suggests any one style is superior — the "best" style is simply whichever one suits a given person.</p>
+    <p>Styles are broadly grouped as: <b>visual</b> (reading/seeing), <b>auditory</b> (listening), and <b>kinaesthetic</b> (physical/hands-on activity). A person's core learning style tends to form early in life and, once set, is not easily changed at a fundamental level.</p>
+    <div class="note"><span class="label">Teacher's note</span> A student's visual preference doesn't mean they "can't learn" from a lecture — it means a lecture-heavy diet is less efficient <i>for them</i>. Good teaching is sensitive to style without assuming a student is incapable outside their preferred mode. Evidence suggests students achieve more when given at least some opportunity to learn in their preferred style — but that doesn't mean over-indexing on one channel forever.</div>
+
+    <h3>Five categories of learning strategies</h3>
+    <div class="grid-2">
+      <div class="card"><h5>Rehearsal strategy</h5>Active repetition of material (e.g. writing it out repeatedly) or focusing on key parts. For simple rote tasks: saying key terms aloud, copying material, taking verbatim notes, or underlining important sections.</div>
+      <div class="card"><h5>Elaboration strategy</h5>Building connections with familiar things. For rote memory, this means mental imagery, mnemonics like the "peg-word" method. For deeper, meaningful learning: paraphrasing, summarising, forming analogies, note-taking, going beyond verbatim repetition, and answering "how does this new information relate to what I already know?"</div>
+      <div class="card"><h5>Organisational strategy</h5>Breaking material into parts and imposing a structure by identifying subordinate–superordinate relationships. For simple rote learning: breaking lists into chunks. For complex, meaningful learning: outlining a text, building concept hierarchies or concept maps, drawing diagrams that show relationships.</div>
+      <div class="card"><h5>Comprehension-monitoring strategy</h5>Knowing what you're doing as you do it — tracking the strategy in use and the success achieved, and adjusting behaviour accordingly. Includes self-questioning to test comprehension, taking action when something doesn't make sense, using stated objectives to guide study, setting sub-goals, and revising strategy when needed.</div>
+      <div class="card"><h5>Affective strategy</h5>Establishing and sustaining motivation, focusing attention, maintaining concentration, managing performance pressure and anxiety, and managing time effectively.</div>
+    </div>
+    <p>These strategies and the cognitive skills behind them matter not only for teaching primary/secondary students but are equally useful for the teacher's own learning.</p>
+
+    <h3>Thinking skills in the classroom</h3>
+    <ul>
+      <li><b>Identify the thinking skill to teach.</b> Choose the set of thinking skills most important for your subject.</li>
+      <li><b>Identify comprehension gaps.</b> In maths and science, a common problem is over-reliance on formulas that aren't actually understood. In reading, students may grasp the literal meaning of a passage but not what conclusions follow from it.</li>
+      <li><b>Know the process.</b> Before teaching "comparison," make sure students actually know the logical steps involved in comparing two things.</li>
+      <li><b>Encourage active participation</b> in reasoning — have students justify their answers, compare with peers, demonstrate their own reasoning.</li>
+      <li><b>Apply abstract ideas concretely.</b> Ask students to present an abstract idea using relevant, everyday examples.</li>
+      <li><b>Use probing questions</b> — not every question promotes thinking. Most classroom questions have one-word, recall-only answers; follow factual questions with ones that require actual reasoning.</li>
+      <li><b>Involve students in forming questions</b> themselves — this can stimulate thinking, e.g. by turning headings/sub-headings into questions while reading.</li>
+      <li><b>Develop listening and observation skills</b> — fundamental to both communication and thinking.</li>
+      <li><b>Involve parents</b> — encourage them to help build thinking skills at home too, by asking children to predict story outcomes, explain their feelings, and so on.</li>
+    </ul>
+
+    <h3>Factors useful for learning</h3>
+    <p>Success depends on three broad pillars: the teacher-and-learner, the subject taught, and the teaching technique.</p>
+    <h4>Personal factors</h4>
+    <ul>
+      <li><b>The learner</b> — is the child ready to receive the intended knowledge? A child learns continuously, whether or not they're formally schooled — from nature, from their surroundings, from people around them. This informal learning may be less polished/structured than curriculum-based learning, but it's genuine, honest, and rooted in real resources.</li>
+      <li><b>The teacher</b> — teaching is a responsibility that must be taken up thoughtfully, given the weight the word "Guru" carries. A teacher should be fully knowledgeable, dedicated, unbiased, understanding, and possess leadership qualities. A teacher's influence on a child's mind can last a lifetime — this is not simply labour sold for money, but involves cooperation, camaraderie, harmony, love, reverence, and belonging.</li>
+    </ul>
+
+    <h4>Environmental factors</h4>
+    <ul>
+      <li><b>Classroom &amp; school environment</b> — cleanliness, safety, adequate space, hygiene, and a calm, encouraging atmosphere matter enormously for successful teaching.</li>
+      <li><b>Teaching techniques</b> used, appropriate to age: play-way (ages 3–5), activity, demonstration, drawing, modelling, music, and — as children get older — audio-visual aids, maps, charts, models, experiments, quizzes, lectures, debates, excursions, reading, writing, memory practice, project work, seminars, discussion, problem-solving, assignments, and inductive/deductive teaching approaches.</li>
+    </ul>
+    <p>One useful mnemonic for the whole teaching process: <b>OPTRA</b></p>
+    <table>
+      <tr><th>Stage</th><th>Meaning</th></tr>
+      <tr><td><b>O</b>rganisation</td><td>Classroom upkeep — space, furniture, lighting, ventilation, seasonal heating/cooling, blackboard, supporting teaching material</td></tr>
+      <tr><td><b>P</b>reparation</td><td>Preparing the actual content — presentation, extent, and detail of facts; the lesson plan, including the teacher's diary</td></tr>
+      <tr><td><b>T</b>ransmission</td><td>Delivering subject matter to learners in sequence, via two-way interpersonal communication</td></tr>
+      <tr><td><b>R</b>ecapitulation</td><td>The teacher summarises key facts of the topic taught, in a balanced, sequential way</td></tr>
+      <tr><td><b>A</b>ssimilation</td><td>Confirming how deeply the knowledge given has actually been absorbed — through questions, practice, written answers, and a final summary</td></tr>
+    </table>
+    <p><b>The third environmental factor — family and community.</b> Well-educated, values-driven families tend to raise children who perform better in school. But surprisingly, even affluent, educated families can raise undisciplined, spoiled children if parents fail to monitor progress and simply substitute money for attention. So beyond financial resources, parents must give their children love, time, discipline, and values — otherwise, blaming the teacher or school later serves little purpose.</p>
+    <div class="note"><span class="label">Teacher's note</span> The takeaway across this whole chapter: teaching-learning succeeds when love, discipline, and resources are kept in balance — too much of any one, at the cost of the others, tends to backfire.</div>
+  </section>
+
+  <!-- CHAPTER 10 -->
+  <section class="chapter" id="ch10">
+    <div class="chap-label">Chapter 10</div>
+    <h2>Thorndike's Laws of Learning</h2>
+    <p><b>E. L. Thorndike</b>, the American psychologist regarded as the father of educational and animal psychology, derived his laws of learning from experiments on animals, observing what changes occur during learning. He divided his laws into <b>primary laws</b> (3 of them) and <b>secondary laws</b> (5 of them).</p>
+
+    <h3>Primary laws</h3>
+    <h4>1. Law of Readiness</h4>
+    <p>This law addresses the mental state of the learner. If a person strongly wants to do something, or is ready to do it, they learn it very easily and their psychological needs are also satisfied. If a person is not ready, they experience dissatisfaction when made to do the task. Example: a two-year-old cannot be taught volleyball, because they aren't ready to receive that knowledge yet.</p>
+    <table>
+      <tr><th>Readiness</th><th>Task performed</th><th>Result</th></tr>
+      <tr><td>Yes</td><td>Yes</td><td>Satisfaction</td></tr>
+      <tr><td>Yes</td><td>No</td><td>Irritation</td></tr>
+      <tr><td>No</td><td>Yes</td><td>Irritation</td></tr>
+    </table>
+
+    <h4>2. Law of Exercise (or Use)</h4>
+    <p>Based on "practice makes a person perfect." If an action is repeated again and again, it becomes more effective and durable. This law highlights the importance of practice and repetition in learning.</p>
+    <div class="quote-block"><b>Hilgard &amp; Bower (1975):</b> The law of exercise shows that practising strengthens the stimulus-response bond, while stopping practice weakens it or causes forgetting.</div>
+    <p>Thorndike presented two forms of this law:</p>
+    <div class="grid-2">
+      <div class="card"><h5>Law of Use</h5>Practising = learning.</div>
+      <div class="card"><h5>Law of Disuse</h5>Not practising = forgetting.</div>
+    </div>
+
+    <h4>3. Law of Effect</h4>
+    <p>The most important of Thorndike's laws.</p>
+    <div class="quote-block"><b>Thorndike:</b> "When a modifiable connection is made between a situation and a response, and this is accompanied or followed by a satisfying state of affairs, the strength of the connection increases. When this connection is accompanied or followed by an annoying state, its strength decreases."</div>
+    <p>This law highlights the importance of reward and punishment.</p>
+
+    <h3>Secondary laws</h3>
+    <div class="grid-2">
+      <div class="card"><h5>Law of Multiple Responses</h5>When faced with a new problem, a person tries various responses to find a solution, continuing until the right one is found — which brings satisfaction.</div>
+      <div class="card"><h5>Law of Attitude (Mental Set)</h5>How much we learn depends on our attitude/mindset toward what we're learning — the more receptive the mindset, the faster the learning. If mentally prepared, learning happens quickly; if not, it doesn't happen at all.</div>
+      <div class="card"><h5>Law of Partial Activity</h5>We break a task into partial components first, which makes the whole task simpler and more manageable, then complete it by quickly and easily finishing each part.</div>
+      <div class="card"><h5>Law of Similarity (Analogy)</h5>An organism responds to a new situation in the same way it responded to a similar past situation — i.e. new learning leverages the help of past experience. Thorndike based his <b>theory of identical elements</b> (transfer of learning) on this law.</div>
+      <div class="card"><h5>Law of Associative Shifting</h5>A response once given to one situation gets given, in the same way, to a similar new situation. A response a person is capable of can arise even from a brand-new stimulus.</div>
+    </div>
+
+    <h3>Other names for Thorndike's theory</h3>
+    <ul>
+      <li>Stimulus-Response Theory (S-R Theory)</li>
+      <li>Stimulus-Response Bond Theory</li>
+      <li>Bonding / Connectionism Theory</li>
+      <li>Trial and Error Theory</li>
+    </ul>
+    <p><b>Transfer of Learning — Theory of Identical Elements:</b> "Transfer between what was learned before and after will happen only to the extent that the elements involved are the same." (Day I: A, B, C → Day II: A, B, C, D, E — the shared elements A, B, C are what transfers.)</p>
+    <p><b>Thorndike's major books:</b> <i>Animal Intelligence</i>; <i>Educational Psychology</i>; <i>The Principles of Teaching</i>; <i>Education, a First Book</i>.</p>
+  </section>
+
+  <!-- CHAPTER 11 -->
+  <section class="chapter" id="ch11">
+    <div class="chap-label">Chapter 11</div>
+    <h2>Theories of Learning</h2>
+    <p>"How does learning actually happen?" — psychologists have proposed several theories over the years, broadly grouped into three families: <b>Behaviourism</b>, <b>Cognitivism</b>, and <b>Social Constructivism</b>.</p>
+
+    <div class="grid-2">
+      <div class="card"><h5>Behaviourism</h5>Thorndike, Skinner (and Pavlov as a related tradition)</div>
+      <div class="card"><h5>Social Constructivism</h5>Bandura, Vygotsky, Bruner</div>
+    </div>
+    <p><b>Cognitivism:</b> Jean Piaget.</p>
+    <p>Kingsley &amp; Garry split theories into <b>Stimulus-Response theories</b> (Thorndike, Hull, Guthrie) and <b>Field theories</b> (Lewin, Tolman, Gestaltist thinkers).</p>
+
+    <h3>Trial and Error Theory — Thorndike</h3>
+    <p>Also called the Stimulus-Response theory, or theory of frequency. When a person learns something, a specific stimulus is present that provokes a specific response; when a specific stimulus repeatedly links to a specific response, this stimulus-response bond forms — this school of thought is called <b>connectionism</b>.</p>
+    <p>Thorndike explained: learning is the establishment of connections/bonds, and the brain is the organ that forms these bonds. Based on his experiments, he found that a person tries to react ("redress") based on their own capacity — persisting until success arrives. Throughout this, trial and error happen side by side, and as learning improves, errors reduce.</p>
+    <p>In short: learning, after many trials and errors, is finally "getting it" — this is the Trial and Error theory.</p>
+
+    <h4>Thorndike's famous experiment</h4>
+    <p>A hungry cat was shut inside a puzzle box whose door opened via a latch operated by a lever. Food (the stimulus) was placed outside. On first seeing the food the cat reacted, but not knowing the trick, it thrashed about — clawing the bars, biting, scratching, meowing — until, by accident, its paw hit the lever and the door swung open. The cat had solved the problem of reaching the food by chance. This is exactly what's meant by "learning through trial and error."</p>
+    <table>
+      <tr><th>Element</th><th>In the experiment</th></tr>
+      <tr><td>Drive</td><td>Hunger</td></tr>
+      <tr><td>Goal</td><td>A piece of fish</td></tr>
+      <tr><td>Obstacle to the goal</td><td>The box's locked exit</td></tr>
+      <tr><td>Random/awkward attempts</td><td>Biting at the box</td></tr>
+      <tr><td>Accidental success</td><td>Lever gets pressed</td></tr>
+      <tr><td>Correct response gets selected</td><td>Method of opening the door</td></tr>
+    </table>
+
+    <h4>Educational significance</h4>
+    <ul>
+      <li>Can be used effectively with children of lower IQ.</li>
+      <li><b>Crow &amp; Crow:</b> useful for deep, deliberate-thinking subjects like maths, science, and philosophy.</li>
+      <li>Applications: a child learning to walk, fastening shirt buttons, tying a tie knot.</li>
+    </ul>
+
+    <h3>Classical Conditioning Theory — Ivan Pavlov (1849–1936)</h3>
+    <p>Also called: pure/original conditioning, conditioned response theory, associated-reflex theory, conditioned-reflex theory. A Russian physiologist, awarded the Nobel Prize for his research on dogs' digestion. Classical conditioning is a sequential process in which a neutral stimulus, when paired with a natural stimulus, takes on the features of that natural stimulus — also called <b>stimulus substitution</b>.</p>
+
+    <h4>Pavlov's experiment</h4>
+    <p>In a controlled setting, Pavlov attached a tube to a hungry dog's mouth to collect saliva. Initially, seeing food and hearing a bell together produced salivation — a natural response. Later, when the bell alone was rung (with food withheld), the dog still salivated naturally.</p>
+    <table>
+      <tr><th>Stage</th><th>Nature of stimulus</th><th>Nature of response</th></tr>
+      <tr><td>1</td><td>Food (Unconditioned stimulus, UCS)</td><td>Salivation (UCR)</td></tr>
+      <tr><td>2</td><td>Bell sound (Neutral stimulus, NS)</td><td>Alertness (UCR)</td></tr>
+      <tr><td>3</td><td>Bell + Food (NS = CS+UCS)</td><td>Salivation (UCR = CR)</td></tr>
+      <tr><td>4</td><td>Bell alone (CS)</td><td>Salivation (CR)</td></tr>
+    </table>
+    <ul>
+      <li>Repeated pairing of the bell and food creates a new, learned response — salivation to the bell — called conditioning.</li>
+      <li>Food is the unconditioned stimulus; salivation to food is the unconditioned response.</li>
+      <li>After conditioning, the bell becomes a conditioned stimulus (CS), and salivating to the bell becomes a conditioned response (CR). This type of conditioning is called <b>Classical Conditioning</b>.</li>
+      <li>In classical conditioning, a bond forms between two stimuli, so one stimulus (the bell) comes to signal the arrival of the other (food).</li>
+    </ul>
+
+    <h4>Educational significance</h4>
+    <p>Pavlov believed a person's capacity for learning depends on the type of their nervous system and on repeated practice within reinforcement. Applications: emotional fears in children with weak mental health can be reduced through affection, love, and good treatment; the theory is applied by teachers in language and maths instruction.</p>
+
+    <h3>Operant Conditioning Theory — B. F. Skinner (1904–1990)</h3>
+    <p>Proposed at Harvard University. Also called: active/operant conditioning, instrumental conditioning, R-S conditioning, "operant theory"/"empty organism" approach.</p>
+    <p>In operant conditioning, an organism must first display the correct/appropriate response itself, in order to obtain a desired stimulus or outcome, or to avoid an unpleasant one — i.e., the behaviour performed in response to the stimulus/situation determines the outcome. Hence "active" or "operant" conditioning — also called operant learning.</p>
+    <p>Skinner concluded from his experiments that activity arising out of motivation is what's responsible for learning. Operant behaviour relates not to a known stimulus but to arousal/excitation itself.</p>
+    <div class="quote-block"><b>D. Amato (1970):</b> Instrumental conditioning is learning in which the response depends on reinforcement, and does not involve a choice among experimentally-defined alternatives.</div>
+
+    <h4>Skinner's experiments</h4>
+    <p>Skinner experimented mainly with a rat (1938) and a pigeon (1938). He designed a box-shaped apparatus — called the operant conditioning chamber, later known as the <b>Skinner Box</b> — essentially an improved version of Thorndike's puzzle box, with a lever that dispensed food when pressed.</p>
+    <p>A rat placed in the box moved around randomly; by accident its paw hit the lever, and food arrived along with a bell sound. Gradually the rat learned to press the lever deliberately. Skinner concluded that food acted as <b>reinforcement</b>, motivating the rat to press the lever — as a result, the rat learned to obtain food. He repeated similar work with pigeons.</p>
+    <ul>
+      <li>Reinforcement is the central concept of this theory; the term "reinforcement" itself was coined by Skinner.</li>
+      <li>Like Pavlov's theory, Skinner used the concepts of extinction and spontaneous recovery.</li>
+      <li>Skinner described two kinds of reinforcement:
+        <ul>
+          <li><b>Positive reinforcement</b> — increases the likelihood of a response. Two kinds: <i>primary</i> (food, water) and <i>secondary</i> (status, respect, reward, praise).</li>
+          <li><b>Negative reinforcement</b> — refers to a stimulus that the organism wants to avoid; example: wearing wool to avoid extreme cold, or wearing sunglasses to avoid harsh sun.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h4>Educational significance</h4>
+    <p><b>Reinforcement</b> is the central element in this theory. Anything that strengthens a desired response is a reinforcer — verbal praise, a good grade, achievement, or satisfaction can all count. Negative reinforcers (punishment) are also part of this theory, and reduce undesired responses.</p>
+    <ul>
+      <li>Reinforcement should be used to help students learn and stay motivated.</li>
+      <li>Good work should be encouraged through positive reinforcement.</li>
+      <li>Wrong behaviour should be reduced through use of negative reinforcement.</li>
+      <li>Per this theory, punishment cannot help with learning.</li>
+      <li>Used to build vocabulary in children.</li>
+      <li>Per Skinner, if a person is informed of results/outcomes, their learning and behaviour are influenced.</li>
+      <li>Helps children with mild cognitive/mental conditions learn necessary behaviours.</li>
+      <li>Speeds up learning and improves success rates.</li>
+      <li>Skinner's biggest contribution is to sequential/step-by-step learning, and he emphasised its usefulness for improving vocabulary and meaningful learning.</li>
+    </ul>
+    <p><b>Skinner's major books:</b> <i>The Behavior of Organisms</i>; <i>Science and Human Behavior</i>; <i>Enjoy Old Age</i>; <i>Schedules of Reinforcement</i>.</p>
+
+    <h3>Insight Theory (Gestalt Theory of Learning)</h3>
+    <p>Proposed by four German psychologists: <b>Max Wertheimer</b>, <b>Kurt Koffka</b>, <b>Wolfgang Köhler</b>, and <b>Kurt Lewin</b> (all later moved to America). Wertheimer is regarded as the founder of Gestalt theory. Gestaltists believed learning is nothing but the development of a new insight, or the refinement of an existing one; during the process, a person perceives the situation holistically, which is why this is also called the Gestalt theory of learning.</p>
+    <div class="quote-block"><b>Köhler:</b> "Insight is sudden knowledge, when a person gains a definite understanding upon seeing a particular situation."</div>
+    <div class="quote-block"><b>Good:</b> "Insight is a sudden, definite, and immediate awareness of the real situation."</div>
+    <p>Köhler described insight-based learning as an "Aha! experience" or a "bolt of light."</p>
+
+    <h4>Köhler's experiments with chimpanzees</h4>
+    <p>Köhler ran several famous experiments with chimps (sharing ~99% DNA with humans), most famously with a chimp named <b>Sultan</b>.</p>
+    <div class="grid-2">
+      <div class="card"><h5>Experiment 1</h5>A banana hung from the ceiling; a box sat in the cage. After some jumping about, Sultan suddenly grasped the solution and climbed onto the box to reach the banana. <b>Insight:</b> using the box to gain height.</div>
+      <div class="card"><h5>Experiment 2</h5>The banana was raised higher, requiring 2–3 boxes stacked on top of each other. Sultan eventually stacked them and retrieved the food. <b>Insight:</b> stacking boxes for greater height.</div>
+      <div class="card"><h5>Experiment 3</h5>A stick was left inside the cage, bananas placed outside. After trying to reach through the bars by hand, Sultan grabbed the stick and used it to pull the banana in. <b>Insight:</b> using a tool (stick) to extend reach.</div>
+      <div class="card"><h5>Experiment 4</h5>Two short sticks were placed in the cage, neither long enough alone to reach the banana, but joinable into one long stick. After failed attempts, Sultan finally joined the two sticks and retrieved the food. <b>Insight:</b> combining tools to solve a novel problem.</div>
+    </div>
+
+    <h4>Educational significance</h4>
+    <ul>
+      <li>More useful for high-IQ/high-ability students.</li>
+      <li>Should be applied in curriculum design and organisation.</li>
+      <li>Useful for creative work; it pushes back against rote learning.</li>
+      <li>Effective for teaching demanding subjects like maths and science.</li>
+      <li>Helps develop cognitive abilities like imagination, intelligence, and creativity.</li>
+      <li>Reduces reliance on purely mechanical habit-based learning.</li>
+      <li>Encourages children to discover knowledge for themselves.</li>
+    </ul>
+    <div class="quote-block"><b>Garrison:</b> "Most of the problem-solving learning that happens in schools can be explained through this theory."</div>
+
+    <h3>Humanistic Learning Theory</h3>
+    <p>Rooted in a humanist philosophy in which a person develops a unique way of managing their environment and achieves their best abilities — focused not on some transcendent human nature but on the qualities that make us human, or that give the fullest human satisfaction. The 1961 journal <i>Journal of Humanistic Psychology</i> highlighted that humanistic psychology throws light on individual needs, creativity, self-actualisation, and responsibility. Its leading proponents: <b>Abraham Maslow</b> and <b>Carl Rogers</b>.</p>
+    <p>In his 1954 book <i>Motivation and Personality</i>, Maslow adopted the humanistic viewpoint and explained personality using his <b>Need Theory</b>. He believed a person's shortcomings and gaps help them survive — he called these gaps "needs," describing five types in a hierarchical order (giving the famous "pyramid of needs").</p>
+
+    <div class="card">
+      <h5>Maslow's hierarchy of needs (low → high)</h5>
+      <ol>
+        <li>Physiological needs (hunger, thirst, etc.)</li>
+        <li>Safety needs (feeling safe from danger)</li>
+        <li>Love and belongingness needs (being in a group, being loved)</li>
+        <li>Self-esteem needs (achievement, recognition, fame)</li>
+        <li>Self-actualisation / self-expression needs</li>
+      </ol>
+    </div>
+    <p>Per Maslow, a person satisfies these needs in a fixed order, and a need persists in a person until it's fully satisfied.</p>
+
+    <h4>Educational significance</h4>
+    <p>The humanistic theory of learning recommends educational reforms like open schools, non-graded classrooms, and free schools.</p>
+    <ul>
+      <li>Treats child-centred education as central; lesson plans should be built after assessing a student's interest, aptitude, ability, and aspiration.</li>
+      <li>Emphasises the importance of individual differences; everyone's individuality deserves respect.</li>
+      <li>Its central educational maxim: "understand the child first, then teach."</li>
+      <li>Teaching methods should be chosen based on the learner's readiness, mental state, and motivation.</li>
+      <li>Emphasises self-discipline and self-control.</li>
+    </ul>
+
+    <h3>Social Learning Theory — Albert Bandura</h3>
+    <p>Social learning begins with contact/interaction. Key points of this theory:</p>
+    <ol>
+      <li>Not learning something is also a form of learning.</li>
+      <li>Learning need not always be direct — it can be indirect too.</li>
+      <li>After learning, a change in behaviour isn't necessarily required.</li>
+      <li>Reward and punishment have no particularly special effect on learning.</li>
+    </ol>
+    <p><b>Experiments:</b> young children, the "Bobo doll" experiment.</p>
+    <p><b>Other names:</b> observational theory, modelling theory, imitation-of-model theory, social-cognitive theory, imitation theory, direct learning theory.</p>
+    <h4>Stages of social learning</h4>
+    <p>Attention → Retention → Reproduction → Motivator (the four-stage cycle: pay attention, remember it, reproduce it, and be motivated to do so).</p>
+    <p><b>Major books:</b> <i>The Social Learning Theory</i>; <i>The Principles of Behaviour Modification</i>; <i>Psychological Modelling</i>.</p>
+    <p><b>Educational significance:</b> helps social development; emphasises imitation; emphasises observation; helps in personality formation.</p>
+
+    <h3>Other important theories — quick reference</h3>
+    <div class="grid-2">
+      <div class="card"><h5>Latent Learning Theory — Edward C. Tolman</h5>
+        Also called: sign/latent learning, cognitive map theory, place learning, stimulus-stimulus learning, sign-expectancy theory. Tolman gave little weight to reward/reinforcement in his theory; famous for the "maze" experiment on rats (T-maze). He coined the term "cognitive," giving us the idea of <b>cognitive maps</b>. His book: <i>Cognitive Maps in Rats and Men</i>.
+      </div>
+      <div class="card"><h5>Field Theory — Kurt Lewin (1917)</h5>
+        Also called: topological theory, life-space theory. Per Lewin: "Learning is the result of the conflict between a person and their environment," expressed as <b>L = P × E</b> (Learning = Person × Environment). Lewin described four kinds of person–environment conflict: approach–approach, approach–avoidance, avoidance–avoidance, and multiple approach–avoidance. Books: <i>A Dynamic Theory of Personality</i>; <i>Field Theory in Social Science</i>; <i>Topological Psychology</i>.
+      </div>
+      <div class="card"><h5>Mathematical (Drive-Reduction) Theory — Clark L. Hull</h5>
+        Also called: need-assessment theory, drive-reduction theory, incentive theory. Books: <i>The Principles of Behavior</i>; <i>The Essentials of Behavior</i>.
+      </div>
+      <div class="card"><h5>Contiguity Theory — Edwin R. Guthrie</h5>
+        Also called: one-trial theory, stimulus-response association theory, displacement/transfer learning theory.
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 12 -->
+  <section class="chapter" id="ch12">
+    <div class="chap-label">Chapter 12</div>
+    <h2>Children with Disabilities</h2>
+    <p>Some children are born with a physical impairment; in others, illness, an accident, disaster, or injury later leaves a part of the body impaired — these children are called <b>children with disabilities</b>.</p>
+    <div class="quote-block"><b>Dr. S. S. Mathur:</b> A person whose physical impairment is severe enough to hinder participation in normal activities is said to be "disabled."</div>
+    <div class="quote-block"><b>Crow &amp; Crow:</b> Children whose physical impairment prevents or limits normal activities are described as having a physical disability.</div>
+    <p>The <b>UNCRPD (2006)</b> — the UN Convention on the Rights of Persons with Disabilities — states that disability relates to all the behavioural and environmental barriers that prevent a person from full and effective participation in society on an equal basis with others. <b>Wendell (1996)</b>, in <i>The Rejected Body</i>, described disability as a social phenomenon.</p>
+    <p>In India, the <b>Right to Education Act, 2009</b> (in force since 1 April 2010) guarantees free and compulsory education to every child aged 6–14 under Article 21A. The <b>National Education Policy, 2020</b> extends this principle to children aged 3–18.</p>
+    <div class="note"><span class="label">WHO framework, 1980</span>
+    The World Health Organization's <b>International Classification of Impairments, Disabilities, and Handicaps (ICIDH)</b> defined a linear progression: <b>Disease → Impairment → Disability → Handicap</b>.</div>
+    <ul>
+      <li>Article 21A of the Constitution treats education as a fundamental right; Section 26 of the Persons with Disabilities Act, 1995, guarantees free and appropriate education to children with disabilities up to age 18.</li>
+      <li>Every year, 3 December is observed by the United Nations as <b>World Disability Day</b> (International Day of Persons with Disabilities).</li>
+    </ul>
+
+    <h3>Types of physical disability</h3>
+    <p>Physically disabled children fall broadly into four groups: <b>visually impaired</b>, <b>hearing impaired</b>, <b>orthopaedically/physically impaired</b>, and <b>multiple disabilities</b>.</p>
+
+    <h4>Visually impaired children</h4>
+    <p>These are children who have significant difficulty seeing objects properly. Two categories: <b>totally blind</b> and <b>partially blind / low vision</b>.</p>
+    <p>Per the Persons with Disabilities Act, 1995, a person is "totally blind" if any one of these applies:</p>
+    <ol type="i">
+      <li>Total absence of sight; or</li>
+      <li>Visual acuity not exceeding 6/60 or 20/200 (Snellen) in the better eye even with corrective lenses; or</li>
+      <li>A visual field limited to an angle of 20 degrees or worse.</li>
+    </ol>
+    <h5>Educational provisions for visually impaired students</h5>
+    <ul>
+      <li>Residential schooling arrangements</li>
+      <li>Small class sizes, for individual attention</li>
+      <li>Specialised curriculum</li>
+      <li>Specially trained teachers</li>
+      <li>Use of the Braille method</li>
+      <li>Affection, empathetic behaviour, and an inclusive environment</li>
+      <li>Cooperation from government, non-government, and voluntary organisations</li>
+    </ul>
+
+    <div class="note"><span class="label">Braille script</span>
+    Braille is written on thick paper, where raised dots are embossed using a pointed tool, and read by feeling the dots with the fingers — called the Braille method. Invented in 1821 by the blind Frenchman <b>Louis Braille</b>, after whom the script is named. It uses combinations of 6 dots to represent 64 letters and symbols, and is now also produced via computers. <b>World Braille Day</b> is observed on 4 January.</div>
+
+    <h4>Hearing-impaired children</h4>
+    <p>Children whose hearing capacity is reduced or entirely absent, causing them difficulty in hearing conversation.</p>
+    <div class="quote-block">Per the Persons with Disabilities Act, 1995: "hearing impairment" means loss of sixty decibels or more in the better ear, in the conversational range of frequencies.</div>
+    <p>Such individuals struggle to hear conversation happening about 5 feet away.</p>
+
+    <h4>Orthopaedically/physically impaired children</h4>
+    <p>Children whose bones, joints, and muscles do not function smoothly — generally described as having a locomotor disability. This category includes children affected by cerebral palsy, polio, spina bifida, arthritis, and similar conditions.</p>
+    <h4>Children with multiple disabilities</h4>
+    <p>When a child has more than one disability, they are described as having multiple disabilities — e.g., visual impairment combined with an orthopaedic impairment.</p>
+
+    <h3>Special provisions for children with disabilities</h3>
+    <div class="grid-2">
+      <div class="card">Therapeutic/remedial facilities</div>
+      <div class="card">Identification and assessment</div>
+      <div class="card">Education based on individual differences</div>
+      <div class="card">Specialised institutions</div>
+      <div class="card">Allowances/stipends</div>
+      <div class="card">Specialised curriculum and activities</div>
+      <div class="card">Sign-language instruction for deaf children</div>
+      <div class="card">Hearing aids for partially deaf children</div>
+      <div class="card">Braille for blind children</div>
+      <div class="card">Glasses and medical consultation for low-vision children</div>
+      <div class="card">Ramps instead of stairs for physically disabled children</div>
+    </div>
+
+    <h3>Educational provisions for children with disabilities in India</h3>
+    <ul>
+      <li>A large number of disabled students in India still lack adequate educational arrangements — many remain outside the school system entirely, or the schools lack the accommodations they need.</li>
+      <li>Teacher-student ratio recommended for children with disabilities: 1:10 at the primary level and 1:15 at the upper-primary level.</li>
+      <li>India has moved away from terms like "handicapped"/"disabled" and now officially uses the term <b>Divyangjan</b> ("persons with divine abilities") across Hindi, English, and regional-language usage.</li>
+    </ul>
+
+    <h3>Key Indian legislation and policy</h3>
+    <div class="grid-2">
+      <div class="card"><h5>Persons with Disabilities Act, 1995</h5>
+        The first Indian law on disability (14 chapters). Chapter 5 covers education; Chapter 6 covers employment. First law to guarantee free education for children with disabilities up to age 18. Recognised <b>7 categories</b> of disability: Mental illness, Mental retardation, Blindness, Low vision, Hearing impairment, Leprosy-cured, and Locomotor disability. Introduced the first reservation for people with disabilities in government jobs (3% total: 1% each for visual, hearing, and locomotor disability) and 3% reservation in higher education. Eligibility for benefits requires 40% or more disability; fraudulently claiming benefits carries a penalty of up to 2 years' imprisonment or a fine of ₹20,000, or both. Provided for free transport, books, bags, uniforms, prosthetics, and assistive devices to help ensure access to schools.
+      </div>
+      <div class="card"><h5>Rights of Persons with Disabilities Act, 2016 (RPWD Act)</h5>
+        The newest and most comprehensive law, replacing the 1995 Act. Has 17 chapters and one schedule; Chapter 3 covers education, Chapter 4 covers employment. Raised the guarantee of free and compulsory education for children with disabilities to age 18. First law to use the terms <b>Divyangjan</b> and "disability" formally. Expanded recognised disabilities from 7 to <b>21 categories</b>, listed in the Act's schedule — including dwarfism, acid-attack survivors, speech and language disability, haemophilia, thalassaemia, sickle cell disease, muscular dystrophy, autism, cerebral palsy, Parkinson's disease, intellectual disability, multiple disabilities, multiple sclerosis, and specific learning disability, alongside the original 7. Raised job reservation from 3% to <b>4%</b> (1% each for visual impairment, deaf/hard of hearing, locomotor disability, and multiple disability) and higher-education reservation from 3% to <b>5%</b>.
+      </div>
+    </div>
+
+    <h4>Key provisions under the RPWD Act, 2016</h4>
+    <ul>
+      <li>No disabled student may be denied access to educational activities or sports.</li>
+      <li>Schools must make structural/infrastructure changes for easier accessibility.</li>
+      <li>Students with disabilities get either extra time in examinations or an appropriately adapted evaluation system.</li>
+      <li>Scribe assistance is provided in exams where needed.</li>
+      <li>Free transport and accommodation are provided for travel to competitive exams and similar events.</li>
+      <li>A national register is to be maintained, tracking progress every 5 years.</li>
+    </ul>
+
+    <div class="grid-2">
+      <div class="card"><h5>National Policy for Persons with Disabilities (NPPWD), 2006</h5>Grants persons with disabilities equal rights, protection, and respect in society; reiterates free education up to age 18; brings education for ages 6–14 under Sarva Shiksha Abhiyan and free education for ages 15–18 under the integrated scheme "Disha." Recommends a state-level psychological rehabilitation centre for mentally disabled students.</div>
+      <div class="card"><h5>National Education Policy, 1986</h5>Has 12 parts, with a 24-part Programme of Action (POA); Part 15 of the POA covers education and employment for people with disabilities. Suggests forming a council to oversee disability-related education.</div>
+      <div class="card"><h5>National Education Policy, 2020</h5>Aims to connect all categories of disability to education; provides for home schooling for severely disabled students; provides specialised training for future teachers on disability-inclusive education; updates NCERT guidance for sign language and Braille to meet modern needs.</div>
+      <div class="card"><h5>Rehabilitation Council of India (RCI)</h5>Established in 1986 as a registered society, made a statutory body by an Act of Parliament (passed Sept. 1992, effective 22 June 1993). Its main role: accrediting institutions/universities, in India and abroad, that train professionals in disability rehabilitation.</div>
+      <div class="card"><h5>National Trust Act, 1999</h5>Under the Ministry of Social Justice and Empowerment, aims to give dignity, rights, and protection in society to people with four specific conditions: autism, cerebral palsy, mental retardation, and multiple disabilities (only mental retardation had appeared under earlier law). Related welfare schemes include: Vikaas, Gharaunda, Niramaya, Sahyogi, Gyan Prabha, Prerna, Badhte Kadam, Sambhav, and Samarth.</div>
+    </div>
+
+    <h3>Key institutions supporting persons with disabilities in India</h3>
+    <div class="grid-2">
+      <div class="card">Pt. Deendayal Upadhyay National Institute for Persons with Physical Disabilities — New Delhi</div>
+      <div class="card">National Institute for Locomotor Disabilities — Kolkata</div>
+      <div class="card">National Institute for Empowerment of Persons with Multiple Disabilities — Chennai</div>
+      <div class="card">National Institute for Empowerment of Persons with Visual Disabilities — Dehradun</div>
+      <div class="card">National Institute for Empowerment of Persons with Intellectual Disabilities — Secunderabad</div>
+      <div class="card">Swami Vivekanand National Institute of Rehabilitation Training and Research — Cuttack, Odisha</div>
+      <div class="card">National Institute of Mental Health Rehabilitation — Sehore, MP</div>
+      <div class="card">National Institute of Mental Health and Neuro Sciences — Bengaluru, Karnataka</div>
+      <div class="card">Indian Sign Language Research and Training Centre — New Delhi</div>
+      <div class="card">Ali Yavar Jung National Institute of Speech and Hearing Disabilities — Mumbai</div>
+      <div class="card">National Institute for the Orthopaedically Handicapped — Kolkata</div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 13 -->
+  <section class="chapter" id="ch13">
+    <div class="chap-label">Chapter 13</div>
+    <h2>Learning Disabilities</h2>
+    <p>Children with learning disabilities have intellectual ability in the normal range — but face real difficulty in reading, writing, or solving maths-related problems.</p>
+    <p>The term "learning disability" was first coined by <b>Samuel Kirk</b> in 1963.</p>
+    <div class="quote-block"><b>Kirk:</b> "Learning disability" refers to a delay, disorder, or arrested development in one or more of the processes of speech, language, reading, writing, or arithmetic, which is possibly the result of brain dysfunction and/or emotional or behavioural disturbance — and not the result of intellectual disability, sensory impairment, or cultural/instructional factors.</div>
+
+    <h3>Types of learning disabilities</h3>
+    <table>
+      <tr><th>Term</th><th>Nature of the difficulty</th></tr>
+      <tr><td><b>Dyslexia</b></td><td>Difficulty with reading</td></tr>
+      <tr><td><b>Dysgraphia</b></td><td>Difficulty with writing</td></tr>
+      <tr><td><b>Dyscalculia</b></td><td>Difficulty with mathematical skills</td></tr>
+      <tr><td><b>Dysphasia</b></td><td>Difficulty with speech ability</td></tr>
+      <tr><td><b>Aphasia</b></td><td>Difficulty with language communication</td></tr>
+      <tr><td><b>Dysorthographia</b></td><td>Difficulty with spelling</td></tr>
+    </table>
+
+    <h3>A closer look at key learning disabilities</h3>
+    <div class="grid-2">
+      <div class="card"><h5>Dyslexia (reading disorder)</h5>Relates to a child's inability to read fluently. It affects the written form of language, the spoken form, and language proficiency generally. Example symptoms: a child may fail to distinguish "b" and "d," or "saw" from "was," or "nuclear" from "unclear," and may write/read "C" as "D" and vice versa.</div>
+      <div class="card"><h5>Dyscalculia</h5>Errors involving multiplication, division, addition, and subtraction fall under dyscalculia — a learning disability specifically affecting mathematical skills.</div>
+      <div class="card"><h5>Aphasia</h5>A disorder of the brain in which a person shows irregularity, vagueness, and a persistent impairment in speaking, writing, and in understanding or expressing spoken/written words.</div>
+      <div class="card"><h5>Developmental Coordination Disorder (DCD) / Dyspraxia</h5>Children affected by this face a significantly higher risk of difficulty with reading and writing.</div>
+    </div>
+
+    <div class="note"><span class="label">Teacher's note</span> An important, easily-tested point: learning disability is <b>not</b> the same as low intelligence, and it is <b>not</b> influenced by nationality. These are neurologically based, specific processing differences in otherwise cognitively typical children — which is exactly why early, correct identification matters so much: a child struggling with reading despite strong reasoning skills needs a different kind of support than a child who is simply behind academically.</div>
+  </section>
+
+  </main>
+</div>
+
+<footer>
+  Adapted and explained in English from a Hindi CDP (Child Development &amp; Pedagogy) exam study guide, for teacher-education purposes. Content reorganised into chapters with added teaching notes for clarity.
+</footer>
+
+<script>
+  function toggleTheme(){
+    const root = document.documentElement;
+    const cur = root.getAttribute('data-theme');
+    if(cur === 'dark'){ root.setAttribute('data-theme','light'); }
+    else { root.setAttribute('data-theme','dark'); }
+  }
+  // Scrollspy for TOC
+  try{
+    const links = Array.from(document.querySelectorAll('nav.toc a'));
+    const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        const idx = sections.indexOf(entry.target);
+        if(idx === -1) return;
+        if(entry.isIntersecting){
+          links.forEach(l=>l.classList.remove('active'));
+          links[idx].classList.add('active');
+        }
+      });
+    }, {rootMargin: "-20% 0px -70% 0px"});
+    sections.forEach(s=>{ if(s) observer.observe(s); });
+  }catch(e){}
+</script>
+
+</body>
+</html>
